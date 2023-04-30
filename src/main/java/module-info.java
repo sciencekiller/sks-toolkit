@@ -4,7 +4,9 @@ module com.skstoolkit.skstoolkit {
     requires com.jfoenix;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
-    requires org.slf4j;
+    requires org.apache.commons.codec;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.apache.httpcomponents.httpclient;
 
 
     opens com.skstoolkit.skstoolkit to javafx.fxml;

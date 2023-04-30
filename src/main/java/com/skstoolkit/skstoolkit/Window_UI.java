@@ -18,6 +18,7 @@ public class Window_UI extends Application {//继承Application
         pane.setPrefWidth(600);
 
         //Tabs
+
         //主页
         Tab MainTab = new Tab();
         MainTab.setText("主页");
@@ -26,11 +27,8 @@ public class Window_UI extends Application {//继承Application
         Label Heading=new Label("Welcome to Sciencekill's toolkit");
         Heading.setId("Heading");
         Label version=new Label("您正在使用Sciencekill's Toolkit Version : "+Main.version);
-        version.setId("label");
         Label build=new Label("当前版本内部版本号 : "+Main.build);
-        build.setId("label");
         Label channel=new Label("当前渠道 : "+Main.channel);
-        channel.setId("label");
         MainPane.add(Heading,0,0);
         MainPane.add(version,0,1);
         MainPane.add(build,0,2);
@@ -39,12 +37,22 @@ public class Window_UI extends Application {//继承Application
 
         //Messages Toolkit
         Tab MeTTab=new Tab();
-        MeTTab.setText("Messages Toolkit");
+        MeTTab.setText("消息批量发送");
 
         GridPane MeTPane=new GridPane();
+        Label Met_Heading=new Label("Welcome to Messages Toolkit");
+        Met_Heading.setId("Heading");
+        Label MeT_Message_Label=new Label("发送内容:");
+
+        MeTPane.add(Met_Heading,0,0);
+        MeTPane.add(MeT_Message_Label,0,1);
+        MeTTab.setContent(MeTPane);
+
+
 
         //Add tabs
         pane.getTabs().add(MainTab);
+        pane.getTabs().add(MeTTab);
 
         //配置场景
         Scene primaryScene = new Scene(pane);

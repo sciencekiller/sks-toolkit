@@ -1,0 +1,6 @@
+{
+  "version" : "1.0.0",
+  "build" : "10000",
+  "channel" : "dev",
+  "check_url" : "https://raw.githubusercontent.com/sciencekiller/sks-toolkit/main/src/main/resources/version.json"
+}

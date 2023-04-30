@@ -1,12 +1,12 @@
-#Heading{
-    -fx-font-size: 24px;
-    -fx-font-family: "Comic Sans MS";
-}
 .tab-pane{
     -fx-pref-width: 20px;
     -fx-font-size: 18px;
 }
-#label{
+.label{
     -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+}
+#Heading{
+    -fx-font-size: 24px;
     -fx-font-family: "Comic Sans MS";
 }
