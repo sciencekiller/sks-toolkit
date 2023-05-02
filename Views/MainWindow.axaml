@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="sks_toolkit.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="sks_toolkit">
+        Icon="/Assets/logo.ico"
+        Title="Sciencekill's Toolkit">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
