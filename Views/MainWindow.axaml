@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:sks_toolkit.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="sks_toolkit.Views.MainWindow"
+        Icon="/Assets/logo.ico"
+        Title="Sciencekill's Toolkit">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+
+	<TabControl>
+		<TabItem Header="主页" VerticalContentAlignment="Center">
+			<Canvas Width="700" Height="400">
+				<TextBlock FontFamily="/Assets/Font.ttf" FontSize="22" Text="{Binding Current_User}" Canvas.Left="20" Canvas.Top="10"/>
+				<TextBlock FontFamily="/Assets/Font.ttf" FontSize="22" Canvas.Left="20" Canvas.Top="50" Height="50">你好,欢迎来到Sciencekill's Toolkit</TextBlock>
+				<TextBlock FontFamily="/Assets/Font.ttf" Canvas.Left="20" Canvas.Top="90">您的版本为:</TextBlock>
+				<TextBlock FontFamily="/Assets/Font.ttf" Text="{Binding Version}" Canvas.Left="100" Canvas.Top="90"/>
+				<TextBlock FontFamily="/Assets/Font.ttf" Canvas.Left="20" Canvas.Top="120">您当前的内部版本号为:</TextBlock>
+				<TextBlock FontFamily="/Assets/Font.ttf" Text="{Binding Build}" Canvas.Left="170" Canvas.Top="120"/>
+				<TextBlock FontFamily="/Assets/Font.ttf" Canvas.Left="20" Canvas.Top="150">您的频道为:</TextBlock>
+                <TextBlock FontFamily="/Assets/Font.ttf" Text="{Binding Channel}" Canvas.Left="100" Canvas.Top="150"/>
+			</Canvas>
+		</TabItem>
+		<TabItem Header="消息发送" FontSize="14" VerticalAlignment="Center">
+			
+		</TabItem>
+	</TabControl>
+</Window>
