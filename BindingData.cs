@@ -20,5 +20,11 @@ namespace sks_toolkit
             set { this.greetingword = value; }
             get { return this.greetingword; }
         }
+        private string greetingsentence;
+        public string GreetingSentence
+        {
+            set { this.greetingsentence = value; }
+            get { return this.greetingsentence; }
+        }
     }
 }

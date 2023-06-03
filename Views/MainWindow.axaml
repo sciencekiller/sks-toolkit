@@ -18,8 +18,9 @@
 		<TabItem Header="主页" VerticalContentAlignment="Center">
 			<Canvas x:Name="MainTab">
 				<TextBlock Canvas.Left="20" Canvas.Top="20"  FontSize="24">欢迎来到Sciencekill's Toolkit</TextBlock>
-				<TextBlock Canvas.Left="20" Canvas.Top="50" FontSize="16" Text="{Binding GreetingWord}"/>
-				<TextBlock Canvas.Left="80" Canvas.Top="50" FontSize="16" Text="{Binding CurrentUser}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="55" FontSize="16" Text="{Binding GreetingWord}"/>
+				<TextBlock Canvas.Left="80" Canvas.Top="55" FontSize="16" Text="{Binding CurrentUser}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="80" Text="{Binding GreetingSentence}"/>
 			</Canvas>
 		</TabItem>
 	</TabControl>
