@@ -9,8 +9,6 @@ namespace sks_toolkit
     {
         public IControl Build(object data)
         {
-            string User=Environment.UserName;
-            Console.WriteLine(User);
             var name = data.GetType().FullName!.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
