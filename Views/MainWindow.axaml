@@ -21,6 +21,17 @@
 				<TextBlock Canvas.Left="20" Canvas.Top="55" FontSize="16" Text="{Binding GreetingWord}"/>
 				<TextBlock Canvas.Left="80" Canvas.Top="55" FontSize="16" Text="{Binding CurrentUser}"/>
 				<TextBlock Canvas.Left="20" Canvas.Top="80" Text="{Binding GreetingSentence}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="150">当前版本号:</TextBlock>
+				<TextBlock Canvas.Left="100" Canvas.Top="150" Text="{Binding Version}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="170">当前频道号:</TextBlock>
+				<TextBlock Canvas.Left="100" Canvas.Top="170" Text="{Binding Channel}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="190">当前构建号:</TextBlock>
+				<TextBlock Canvas.Left="100" Canvas.Top="190" Text="{Binding Build}"/>
+			</Canvas>
+		</TabItem>
+		<TabItem Header="DeployEnv" VerticalContentAlignment="Center">
+			<Canvas x:Name="DeployEnvTeb">
+				
 			</Canvas>
 		</TabItem>
 	</TabControl>

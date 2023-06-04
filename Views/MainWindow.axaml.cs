@@ -1,6 +1,7 @@
 using Avalonia.Controls;
-using sks_toolkit;
-using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
 namespace sks_toolkit.Views
 {
     public partial class MainWindow : Window
@@ -14,7 +15,8 @@ namespace sks_toolkit.Views
         {
             BindingData data = new BindingData();//创建binding类
             data.CurrentUser = System.Environment.UserName;//获取用户名
-            int TimeNow = System.DateTime.Now.Hour;
+            int TimeNow = System.DateTime.Now.Hour;//获取时间
+            //根据时间指定问候
             if (TimeNow >= 1 && TimeNow < 5)
             {
                 data.GreetingWord = "凌晨好,";
@@ -50,6 +52,20 @@ namespace sks_toolkit.Views
                 data.GreetingWord = "晚上好";
                 data.GreetingSentence = "你在熬夜吗?";
             }
+            //读取版本号
+            string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;
+            string configPath=workDictionary+"Assets\\\\Config.json";
+            JObject Config;
+            using(System.IO.StreamReader configFile = System.IO.File.OpenText(configPath))
+            {
+                using(JsonTextReader jsonReader = new JsonTextReader(configFile))
+                {
+                    Config =(JObject)JToken.ReadFrom(jsonReader);
+                }
+            }
+            data.Version = Config["version"].ToString();
+            data.Channel = Config["channel"].ToString();
+            data.Build = Config["build"].ToString();
             MainTab.DataContext = data;//设置绑定源
         }
     }
