@@ -1,7 +1,6 @@
 using Avalonia.Controls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.IO;
 namespace sks_toolkit.Views
 {
     public partial class MainWindow : Window
@@ -13,6 +12,7 @@ namespace sks_toolkit.Views
         }
         public void Init()//初始化变量
         {
+
             BindingData data = new BindingData();//创建binding类
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
@@ -44,12 +44,12 @@ namespace sks_toolkit.Views
             }
             else if(TimeNow>=17 && TimeNow < 19)
             {
-                data.GreetingWord = "傍晚好";
+                data.GreetingWord = "傍晚好,";
                 data.GreetingSentence = "累了就看看窗外，休息一下~";
             }
             else
             {
-                data.GreetingWord = "晚上好";
+                data.GreetingWord = "晚上好,";
                 data.GreetingSentence = "你在熬夜吗?";
             }
             //读取版本号
@@ -66,6 +66,24 @@ namespace sks_toolkit.Views
             data.Version = Config["version"].ToString();
             data.Channel = Config["channel"].ToString();
             data.Build = Config["build"].ToString();
+            //获取最新版本
+            JObject LatestRelease = WebService.getJsonFromServer("https://api.github.com/repos/sciencekiller/sks-toolkit/releases/latest");
+            if(LatestRelease != null)
+            {
+                data.latestVersion = LatestRelease["name"].ToString();
+            }
+            else
+            {
+                data.latestVersion = "NetWorkConnectError";
+            }
+            if (data.Version == data.latestVersion)
+            {
+                data.latestOrNot = "你正在使用最新的Sciencekill's Toolkit";
+            }
+            else
+            {
+                data.latestOrNot = "有新版本可用，请尽快查看";
+            }
             MainTab.DataContext = data;//设置绑定源
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sks_toolkit
 {
-    public class BindingData
+    internal class BindingData
     {
         private string currentuser = "ERROR?";
         public string CurrentUser
@@ -43,6 +43,18 @@ namespace sks_toolkit
         {
             set { this.build = value; }
             get { return this.build; }
+        }
+        private string latestversion = "ERROR?";
+        public string latestVersion
+        {
+            set { this.latestversion = value;}
+            get { return this.latestversion; }
+        }
+        private string latestornot = "ERROR?";
+        public string latestOrNot
+        {
+            set { this.latestornot = value;}
+            get { return this.latestornot; }
         }
     }
 }

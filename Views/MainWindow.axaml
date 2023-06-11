@@ -27,6 +27,9 @@
 				<TextBlock Canvas.Left="100" Canvas.Top="170" Text="{Binding Channel}"/>
 				<TextBlock Canvas.Left="20" Canvas.Top="190">当前构建号:</TextBlock>
 				<TextBlock Canvas.Left="100" Canvas.Top="190" Text="{Binding Build}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="230">最新版本号:</TextBlock>
+				<TextBlock Canvas.Left="100" Canvas.Top="230" Text="{Binding latestVersion}"/>
+				<TextBlock Canvas.Left="20" Canvas.Top="250" Text="{Binding latestOrNot}"/>
 			</Canvas>
 		</TabItem>
 		<TabItem Header="DeployEnv" VerticalContentAlignment="Center">
