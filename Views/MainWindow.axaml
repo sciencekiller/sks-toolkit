@@ -33,8 +33,9 @@
 			</Canvas>
 		</TabItem>
 		<TabItem Header="DeployEnv" VerticalContentAlignment="Center">
-			<Canvas x:Name="DeployEnvTeb">
-				
+			<Canvas x:Name="DeployEnvTab">
+				<TextBlock Canvas.Left="20" Canvas.Top="20" >请选择需要的开发环境和版本:</TextBlock>
+				<CheckBox Canvas.Left="20" Canvas.Top="50" IsChecked="true">C++(G++)</CheckBox>
 			</Canvas>
 		</TabItem>
 	</TabControl>

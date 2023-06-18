@@ -1,19 +1,35 @@
 using Avalonia.Controls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
+using sks_toolkit.Views;
+using System.Runtime.CompilerServices;
+
 namespace sks_toolkit.Views
 {
     public partial class MainWindow : Window
+
     {
+        Window MainWin;
+        BindingData data = new BindingData();//创建binding类
         public MainWindow()
         {
             InitializeComponent();
             Init();
         }
-        public void Init()//初始化变量
+        public async void Init()//初始化变量
         {
-
-            BindingData data = new BindingData();//创建binding类
+            Ping ping = new();
+            PingReply pingReply = ping.Send("www.baidu.com");
+            if (pingReply.Status != IPStatus.Success)
+            {
+                this.Hide();
+                var noNetworkErrorWindow = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("网络错误", "请检查网络连接后再使用本软件");
+                var wait = await noNetworkErrorWindow.Show();
+                Process.GetCurrentProcess().Kill();
+            }
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
             //根据时间指定问候
@@ -75,12 +91,13 @@ namespace sks_toolkit.Views
             else
             {
                 data.latestVersion = "NetWorkConnectError";
+                data.latestOrNot = "连接到GitHub失败，请开启代理";
             }
             if (data.Version == data.latestVersion)
             {
                 data.latestOrNot = "你正在使用最新的Sciencekill's Toolkit";
             }
-            else
+            else if(data.Version != data.latestVersion&&LatestRelease!=null)
             {
                 data.latestOrNot = "有新版本可用，请尽快查看";
             }

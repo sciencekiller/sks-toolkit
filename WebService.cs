@@ -21,8 +21,16 @@ namespace sks_toolkit
             request.Method = "GET";
             request.ContentType = "application/json; charset=UTF-8";
             request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            request.CookieContainer = new CookieContainer();
+            HttpWebResponse response;
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (WebException)
+            {
+                return null;
+            }
             Stream myResponseStream = response.GetResponseStream();
             StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
             string jsonString = myStreamReader.ReadToEnd();
