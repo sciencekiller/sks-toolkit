@@ -23,56 +23,8 @@ namespace sks_toolkit.Views
             InitializeComponent();
             Init();
         }
-        public void RunCmd(string str)
-        {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = "cmd.exe";
-            p.StartInfo.UseShellExecute = false;    //是否使用操作系统shell启动
-            p.StartInfo.RedirectStandardInput = true;//接受来自调用程序的输入信息
-            p.StartInfo.RedirectStandardOutput = true;//由调用程序获取输出信息
-            p.StartInfo.RedirectStandardError = true;//重定向标准错误输出
-            p.StartInfo.CreateNoWindow = true;//不显示程序窗口
-            p.Start();//启动程序
-
-            //向cmd窗口发送输入信息
-            p.StandardInput.WriteLine(str + "&exit");
-
-            p.StandardInput.AutoFlush = true;
-            //p.StandardInput.WriteLine("exit");
-            //向标准输入写入要执行的命令。这里使用&是批处理命令的符号，表示前面一个命令不管是否执行成功都执行后面(exit)命令，如果不执行exit命令，后面调用ReadToEnd()方法会假死
-            //同类的符号还有&&和||前者表示必须前一个命令执行成功才会执行后面的命令，后者表示必须前一个命令执行失败才会执行后面的命令
-
-
-
-            //获取cmd窗口的输出信息
-            string output = p.StandardOutput.ReadToEnd();
-
-            //StreamReader reader = p.StandardOutput;
-            //string line=reader.ReadLine();
-            //while (!reader.EndOfStream)
-            //{
-            //    str += line + "  ";
-            //    line = reader.ReadLine();
-            //}
-
-            p.WaitForExit();//等待程序执行完退出进程
-            p.Close();
-        }
         public void Init()//初始化变量
         {
-            //开启FastGithub以便获取Github信息
-            bool isfg = true;
-            foreach(var fgp in Process.GetProcessesByName("fastgithub"))
-            {
-                isfg = false;
-            }
-            string WorkDic = Environment.CurrentDirectory;
-            string runfg = "\""+WorkDic + "\\Assets\\FastGithub\\fastgithub.exe\" start";
-            string stopfg ="\""+ WorkDic + "\\Assets\\FastGithub\\fastgithub.exe\" stop";
-            if (isfg==true)
-            {
-                RunCmd(runfg);
-            }
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
             //根据时间指定问候
@@ -126,15 +78,15 @@ namespace sks_toolkit.Views
             data.Channel = Config["channel"].ToString();
             data.Build = Config["build"].ToString();
             //获取最新版本
-            JObject LatestRelease = WebService.getJsonFromServer("https://api.github.com/repos/sciencekiller/sks-toolkit/releases/latest");
+            JObject LatestRelease = WebService.getJsonFromServer("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
             if(LatestRelease != null)
             {
-                data.latestVersion = LatestRelease["name"].ToString();
+                data.latestVersion = LatestRelease["version"].ToString();
             }
             else
             {
                 data.latestVersion = "NetWorkConnectError";
-                data.latestOrNot = "连接到GitHub失败，请开启代理";
+                data.latestOrNot = "连接到Gitee失败，请开启代理";
             }
             if (data.Version == data.latestVersion)
             {
@@ -152,11 +104,6 @@ namespace sks_toolkit.Views
                 gpp_version_list.Add(gpp_version.Key);
             }
             deploy_env_data.Gpp_download_links = gpp_version_list;
-            //关闭Fastgithub
-            if (isfg == true)
-            {
-                RunCmd(stopfg);
-            }
             //设置绑定源
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
