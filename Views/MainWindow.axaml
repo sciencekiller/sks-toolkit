@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="sks_toolkit.Views.MainWindow"
-        Icon="/Assets/logo.ico"
+        Icon="/Assets/icon.ico"
         Title="Sciencekill's Toolkit"
 		FontFamily="/Assets/Font.ttf">
 
@@ -15,6 +15,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 	<TabControl>
+		
 		<TabItem Header="主页" VerticalContentAlignment="Center">
 			<Canvas x:Name="MainTab">
 				<TextBlock Canvas.Left="20" Canvas.Top="20"  FontSize="24">欢迎来到Sciencekill's Toolkit</TextBlock>
@@ -36,6 +37,26 @@
 			<Canvas x:Name="DeployEnvTab">
 				<TextBlock Canvas.Left="20" Canvas.Top="20" >请选择需要的开发环境和版本:</TextBlock>
 				<CheckBox Canvas.Left="20" Canvas.Top="50" IsChecked="true">C++(G++)</CheckBox>
+				<ComboBox Canvas.Left="150" Canvas.Top="50" SelectedIndex="0" x:Name="gpp_versions" Width="200"  Items="{Binding Gpp_download_links}">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+								<TextBlock Text="{Binding}"/>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+		</Canvas>
+		</TabItem>
+		<TabItem Header="关于" VerticalContentAlignment="Center">
+			<Canvas x:Name="AboutTab">
+				<Image Canvas.Left="0" Canvas.Top="20" Width="460" Height="135" Source="/Assets/logo.png"/>
+				<Image Canvas.Left="700" Canvas.Top="30" Width="100" Height="100" Source="/Assets/avalonia-logo.ico"/>
+				<TextBlock Canvas.Left="850" Canvas.Top="40" FontSize="26">Build With</TextBlock>
+				<TextBlock Canvas.Left="850" Canvas.Top="80" FontSize="22">avalonia</TextBlock>
+				<TextBlock Canvas.Left="600" Canvas.Top="10" FontSize="90">×</TextBlock>
+				<TextBlock Canvas.Top="200" FontSize="24">关于/About:</TextBlock>
+				<TextBlock Canvas.Left="10" Canvas.Top="230">Sciencekill's Toolkit(原名More Tools),是Sciencekill开发的应用程序集(只有一个人哦)，提供实用工具。</TextBlock>
+				<TextBlock Canvas.Left="10" Canvas.Top="260">本工具由.Net及AvaloniaUI开发，因此理论上可以在任何操作系统上运行，但是建议在Windows上运行，我们也只会提供Windows版本的程序。</TextBlock>
+				<TextBlock Canvas.Left="10" Canvas.Top="290">如果您需要其他操作系统版本，可自行下载Github源代码编译</TextBlock>
 			</Canvas>
 		</TabItem>
 	</TabControl>

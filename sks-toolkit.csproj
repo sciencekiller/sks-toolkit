@@ -13,6 +13,33 @@
     <AvaloniaResource Remove="Assets\Config.json" />
     <None Remove=".gitignore" />
     <None Remove="Assets\Config.json" />
+    <None Remove="Assets\logo.png" />
+    <Content Include="Assets\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\FastGithub\appsettings.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.amazonaws.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.bootcss.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.fastly.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.github.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.google.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.imgur.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.microsoft.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.packages.json" />
+    <Content Include="Assets\FastGithub\appsettings\appsettings.v2ex.json" />
+    <Content Include="Assets\FastGithub\dnsendpoints.json" />
+    <Content Include="Assets\FastGithub\logs\log20230610.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230611.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230618.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230619.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230620.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230621.txt" />
+    <Content Include="Assets\FastGithub\logs\log20230622.txt" />
+    <Content Include="Assets\FastGithub\README.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +59,7 @@
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview4" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview4" />
+    <PackageReference Include="HyperText.Avalonia" Version="1.0.0" />
     <PackageReference Include="MessageBox.Avalonia" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />

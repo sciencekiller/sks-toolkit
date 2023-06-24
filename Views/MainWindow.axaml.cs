@@ -5,30 +5,73 @@ using System;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using sks_toolkit.Views;
+using sks_toolkit;
 using System.Runtime.CompilerServices;
+using MessageBox;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace sks_toolkit.Views
 {
     public partial class MainWindow : Window
 
     {
-        Window MainWin;
         BindingData data = new BindingData();//创建binding类
+        Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
         public MainWindow()
         {
             InitializeComponent();
             Init();
         }
-        public async void Init()//初始化变量
+        public void RunCmd(string str)
         {
-            Ping ping = new();
-            PingReply pingReply = ping.Send("www.baidu.com");
-            if (pingReply.Status != IPStatus.Success)
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.UseShellExecute = false;    //是否使用操作系统shell启动
+            p.StartInfo.RedirectStandardInput = true;//接受来自调用程序的输入信息
+            p.StartInfo.RedirectStandardOutput = true;//由调用程序获取输出信息
+            p.StartInfo.RedirectStandardError = true;//重定向标准错误输出
+            p.StartInfo.CreateNoWindow = true;//不显示程序窗口
+            p.Start();//启动程序
+
+            //向cmd窗口发送输入信息
+            p.StandardInput.WriteLine(str + "&exit");
+
+            p.StandardInput.AutoFlush = true;
+            //p.StandardInput.WriteLine("exit");
+            //向标准输入写入要执行的命令。这里使用&是批处理命令的符号，表示前面一个命令不管是否执行成功都执行后面(exit)命令，如果不执行exit命令，后面调用ReadToEnd()方法会假死
+            //同类的符号还有&&和||前者表示必须前一个命令执行成功才会执行后面的命令，后者表示必须前一个命令执行失败才会执行后面的命令
+
+
+
+            //获取cmd窗口的输出信息
+            string output = p.StandardOutput.ReadToEnd();
+
+            //StreamReader reader = p.StandardOutput;
+            //string line=reader.ReadLine();
+            //while (!reader.EndOfStream)
+            //{
+            //    str += line + "  ";
+            //    line = reader.ReadLine();
+            //}
+
+            p.WaitForExit();//等待程序执行完退出进程
+            p.Close();
+        }
+        public void Init()//初始化变量
+        {
+            //开启FastGithub以便获取Github信息
+            bool isfg = true;
+            foreach(var fgp in Process.GetProcessesByName("fastgithub"))
             {
-                this.Hide();
-                var noNetworkErrorWindow = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("网络错误", "请检查网络连接后再使用本软件");
-                var wait = await noNetworkErrorWindow.Show();
-                Process.GetCurrentProcess().Kill();
+                isfg = false;
+            }
+            string WorkDic = Environment.CurrentDirectory;
+            string runfg = "\""+WorkDic + "\\Assets\\FastGithub\\fastgithub.exe\" start";
+            string stopfg ="\""+ WorkDic + "\\Assets\\FastGithub\\fastgithub.exe\" stop";
+            if (isfg==true)
+            {
+                RunCmd(runfg);
             }
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
@@ -101,7 +144,22 @@ namespace sks_toolkit.Views
             {
                 data.latestOrNot = "有新版本可用，请尽快查看";
             }
-            MainTab.DataContext = data;//设置绑定源
+            List<string> gpp_version_list = new List<string>();
+            string latest_gpp_version_list_url = "https://gist.githubusercontent.com/sciencekiller/39c1136117ca2d65fb14dfb022170321/raw/4cda05e096edc5c45de9c585ccec7cfc9c714c09/gpp_download.json";
+            JObject latest_gpp_version_list = WebService.getJsonFromServer(latest_gpp_version_list_url);
+            foreach (var gpp_version in latest_gpp_version_list)
+            {
+                gpp_version_list.Add(gpp_version.Key);
+            }
+            deploy_env_data.Gpp_download_links = gpp_version_list;
+            //关闭Fastgithub
+            if (isfg == true)
+            {
+                RunCmd(stopfg);
+            }
+            //设置绑定源
+            MainTab.DataContext = data;
+            DeployEnvTab.DataContext = deploy_env_data;
         }
     }
 }

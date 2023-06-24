@@ -20,13 +20,13 @@ namespace sks_toolkit
             set { this.greetingword = value; }
             get { return this.greetingword; }
         }
-        private string greetingsentence="ERROR?";
+        private string greetingsentence = "ERROR?";
         public string GreetingSentence
         {
             set { this.greetingsentence = value; }
             get { return this.greetingsentence; }
         }
-        private string version="ERROR?";
+        private string version = "ERROR?";
         public string Version
         {
             set { this.version = value; }
@@ -47,14 +47,23 @@ namespace sks_toolkit
         private string latestversion = "ERROR?";
         public string latestVersion
         {
-            set { this.latestversion = value;}
+            set { this.latestversion = value; }
             get { return this.latestversion; }
         }
         private string latestornot = "ERROR?";
         public string latestOrNot
         {
-            set { this.latestornot = value;}
+            set { this.latestornot = value; }
             get { return this.latestornot; }
+        }
+    }
+    internal class Deploy_ENV_Data
+    {
+        private List<string> gpp_download_links = new List<string>();
+        public List<string> Gpp_download_links
+        {
+            set { this.gpp_download_links = value; }
+            get { return this.gpp_download_links; }
         }
     }
 }
