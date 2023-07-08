@@ -36,14 +36,17 @@
 		<TabItem Header="DeployEnv" VerticalContentAlignment="Center">
 			<Canvas x:Name="DeployEnvTab">
 				<TextBlock Canvas.Left="20" Canvas.Top="20" >请选择需要的开发环境和版本:</TextBlock>
-				<CheckBox Canvas.Left="20" Canvas.Top="50" IsChecked="true">C++(G++)</CheckBox>
-				<ComboBox Canvas.Left="150" Canvas.Top="50" SelectedIndex="0" x:Name="gpp_versions" Width="200"  Items="{Binding Gpp_download_links}">
+				<CheckBox Canvas.Left="20" Canvas.Top="50" x:Name="install_gpp" IsChecked="{Binding Install_gpp,Mode=TwoWay}">C++(MinGW-w64)</CheckBox>
+				<ComboBox Canvas.Left="200" Canvas.Top="50" SelectedItem="{Binding Install_gpp_version}" x:Name="gpp_versions" Items="{Binding Gpp_version_list}" Width="200">
 					<ComboBox.ItemTemplate>
 						<DataTemplate>
 								<TextBlock Text="{Binding}"/>
 						</DataTemplate>
 					</ComboBox.ItemTemplate>
 				</ComboBox>
+				<TextBlock Canvas.Left="20" Canvas.Top="370">安装路径:</TextBlock>
+				<Button Canvas.Left="450" Canvas.Top="370" Width="100" Background="Purple" Command="{Binding SelectInstallFolder}">更改路径</Button>
+				<Button Canvas.Left="900" Canvas.Top="400" Width="100" Background="Purple" Command="{Binding StartDeployClicked}">开始部署</Button>
 		</Canvas>
 		</TabItem>
 		<TabItem Header="关于" VerticalContentAlignment="Center">

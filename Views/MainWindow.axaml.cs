@@ -17,7 +17,7 @@ namespace sks_toolkit.Views
 
     {
         BindingData data = new BindingData();//创建binding类
-        Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
+        Deploy_ENV_Data deploy_env_data= new Deploy_ENV_Data();
         public MainWindow()
         {
             InitializeComponent();
@@ -103,7 +103,8 @@ namespace sks_toolkit.Views
             {
                 gpp_version_list.Add(gpp_version.Key);
             }
-            deploy_env_data.Gpp_download_links = gpp_version_list;
+            deploy_env_data.Gpp_version_list= gpp_version_list;
+            deploy_env_data.Download_Link = latest_gpp_version_list;
             //设置绑定源
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
