@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sks_toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1100">
     <TabControl>
 
         <TabItem Header="主页" VerticalContentAlignment="Top">
@@ -29,29 +29,19 @@
             <Canvas x:Name="DeployEnvTab">
                 <TextBlock Canvas.Left="20" Canvas.Top="20" >请选择需要的开发环境和版本:</TextBlock>
                 <CheckBox Canvas.Left="20" Canvas.Top="50" x:Name="install_gpp" IsChecked="{Binding Install_gpp,Mode=TwoWay}">C++(MinGW-w64)</CheckBox>
-                <ComboBox Canvas.Left="200" Canvas.Top="50" SelectedItem="{Binding Install_gpp_version}" x:Name="gpp_versions"  Width="200">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <ComboBox Canvas.Left="200" Canvas.Top="50"  x:Name="gpp_versions" ItemsSource="{Binding Gpp_version_list}" SelectedIndex="0"  Width="200"/>
                 <TextBlock Canvas.Left="20" Canvas.Top="370">安装路径:</TextBlock>
-                <Button Canvas.Left="450" Canvas.Top="370" Width="100" Background="Purple" Command="{Binding SelectInstallFolder}">更改路径</Button>
-                <Button Canvas.Left="900" Canvas.Top="400" Width="100" Background="Purple" Command="{Binding StartDeployClicked}">开始部署</Button>
+                <Button Canvas.Left="900" Canvas.Top="370" Width="100" Background="BlueViolet" Click="SelectInstallFolder">更改路径</Button>
+                <Button Canvas.Left="900" Canvas.Top="400" Width="100" Background="BlueViolet" Click="StartDeployClicked">开始部署</Button>
             </Canvas>
         </TabItem>
         <TabItem Header="关于" VerticalContentAlignment="Top">
             <Canvas x:Name="AboutTab">
-                <Image Canvas.Left="0" Canvas.Top="20" Width="460" Height="135" Source="/Assets/logo.png"/>
-                <Image Canvas.Left="700" Canvas.Top="30" Width="100" Height="100" Source="/Assets/avalonia-logo.ico"/>
-                <TextBlock Canvas.Left="850" Canvas.Top="40" FontSize="26">Build With</TextBlock>
-                <TextBlock Canvas.Left="850" Canvas.Top="80" FontSize="22">avalonia</TextBlock>
-                <TextBlock Canvas.Left="600" Canvas.Top="10" FontSize="90">×</TextBlock>
-                <TextBlock Canvas.Top="200" FontSize="24">关于/About:</TextBlock>
-                <TextBlock Canvas.Left="10" Canvas.Top="230">Sciencekill's Toolkit(原名More Tools),是Sciencekill开发的应用程序集(只有一个人哦)，提供实用工具。</TextBlock>
-                <TextBlock Canvas.Left="10" Canvas.Top="260">本工具由.Net及AvaloniaUI开发，因此理论上可以在任何操作系统上运行，但是建议在Windows上运行，我们也只会提供Windows版本的程序。</TextBlock>
-                <TextBlock Canvas.Left="10" Canvas.Top="290">如果您需要其他操作系统版本，可自行下载Github源代码编译</TextBlock>
+                <Image Canvas.Left="0" Canvas.Top="20" Width="460" Height="135" Source="/logo.png"/>
+                <TextBlock Canvas.Left="10" Canvas.Top="200" FontSize="24">关于/About:</TextBlock>
+                <TextBlock Canvas.Left="10" Canvas.Top="230">Sciencekill's Toolkit(原名More Tools),是Sciencekill开发的应用程序集(只有一个人哦~)，提供实用工具。</TextBlock>
+                <TextBlock Canvas.Left="10" Canvas.Top="260">本工具由.Net及WPF开发，因此理论上只能在Windows上运行，我们也只会提供Windows版本的程序。</TextBlock>
+                <TextBlock Canvas.Left="10" Canvas.Top="290">如果您需要其他操作系统版本，可自行下载Github源代码，使用Avalonia或其他跨平台UI库修改</TextBlock>
             </Canvas>
         </TabItem>
     </TabControl>

@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 
 namespace sks_toolkit
@@ -97,11 +99,25 @@ namespace sks_toolkit
             {
                 gpp_version_list.Add(gpp_version.Key);
             }
+            foreach(var vs in gpp_version_list)
+            {
+                Console.WriteLine(vs);
+            }
             deploy_env_data.Gpp_version_list = gpp_version_list;
             deploy_env_data.Download_Link = latest_gpp_version_list;
             //设置绑定源
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
+        }
+
+        private void SelectInstallFolder(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StartDeployClicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

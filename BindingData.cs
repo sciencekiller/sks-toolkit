@@ -91,7 +91,11 @@ namespace sks_toolkit
         }
         public void StartDeployClicked()
         {
-
+            Console.WriteLine("aaa");
+        }
+        public void SelectInstallFolder()
+        {
+            Console.WriteLine("bbb");
         }
     }
 }
