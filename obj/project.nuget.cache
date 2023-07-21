@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0ejZx+nEhFGc2tmfNoxyxRkjJARrgqylMB0GHbnCNmXcVLvq0NbrfJHCWZVUbV45f+u6guVsjtKR3F3BTiH9LQ==",
+  "success": true,
+  "projectFilePath": "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\scien\\.nuget\\packages\\handycontrols\\3.4.5\\handycontrols.3.4.5.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
