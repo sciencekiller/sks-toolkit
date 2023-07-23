@@ -2,8 +2,6 @@ E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.exe
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\avalonia-logo.ico
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\Config.json
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\Font.ttf
-E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\icon.ico
-E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\logo.png
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.deps.json
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.runtimeconfig.json
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.dll

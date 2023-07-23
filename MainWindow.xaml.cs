@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using sks_toolkit.DeployENV;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Threading;
 using System.Windows;
-
+using System.Windows.Forms;
 namespace sks_toolkit
 {
     /// <summary>
@@ -19,7 +20,7 @@ namespace sks_toolkit
             InitializeComponent();
             Init();
         }
-        public void Init()
+        public async void Init()
         {
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
@@ -74,7 +75,7 @@ namespace sks_toolkit
             data.Channel = Config["channel"].ToString();
             data.Build = Config["build"].ToString();
             //获取最新版本
-            JObject LatestRelease = WebService.getJsonFromServer("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
+            JObject LatestRelease = await WebService.DownloadJson("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
             if (LatestRelease != null)
             {
                 data.latestVersion = LatestRelease["version"].ToString();
@@ -94,12 +95,12 @@ namespace sks_toolkit
             }
             List<string> gpp_version_list = new List<string>();
             string latest_gpp_version_list_url = "https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
-            JObject latest_gpp_version_list = WebService.getJsonFromServer(latest_gpp_version_list_url);
+            JObject latest_gpp_version_list = await WebService.DownloadJson(latest_gpp_version_list_url);
             foreach (var gpp_version in latest_gpp_version_list)
             {
                 gpp_version_list.Add(gpp_version.Key);
             }
-            foreach(var vs in gpp_version_list)
+            foreach (var vs in gpp_version_list)
             {
                 Console.WriteLine(vs);
             }
@@ -112,10 +113,41 @@ namespace sks_toolkit
 
         private void SelectInstallFolder(object sender, RoutedEventArgs e)
         {
+            string selectedFolder = string.Empty;
 
+            using (var dialog = new FolderBrowserDialog())
+            {
+                dialog.SelectedPath = deploy_env_data.Install_path;
+                DialogResult result = dialog.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    selectedFolder = dialog.SelectedPath;
+                }
+            }
+            deploy_env_data.Install_path = selectedFolder;
+            Show_path.Text = selectedFolder;
         }
 
         private void StartDeployClicked(object sender, RoutedEventArgs e)
+        {
+            FreezeControls();
+            Deploy_main deploy = new Deploy_main();
+            Thread thread = new Thread(deploy.Deploy);
+            thread.Start();
+        }
+
+        private void FreezeControls()
+        {
+            startdeploy.IsEnabled = false;
+            selectfolder.IsEnabled = false;
+        }
+        private void UnfreezeControls()
+        {
+            startdeploy.IsEnabled = true;
+            selectfolder.IsEnabled = true;
+        }
+        private void SetProgress()
         {
 
         }

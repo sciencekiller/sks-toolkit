@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,41 +13,24 @@ namespace sks_toolkit
 {
     internal class WebService
     {
-        public static JObject getJsonFromServer(string Url)
+        public static async Task<JObject> DownloadJson(string url)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
-            request.Proxy = null;
-            request.KeepAlive = false;
-            request.Method = "GET";
-            request.ContentType = "application/json; charset=UTF-8";
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.CookieContainer = new CookieContainer();
-            HttpWebResponse response;
-            try
+            using (HttpClient client = new HttpClient())
             {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (WebException)
-            {
-                return null;
-            }
-            Stream myResponseStream = response.GetResponseStream();
-            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
-            string jsonString = myStreamReader.ReadToEnd();
+                HttpResponseMessage response = await client.GetAsync(url);
 
-            myStreamReader.Close();
-            myResponseStream.Close();
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    JObject jObject = JsonConvert.DeserializeObject<JObject>(json);
 
-            if (response != null)
-            {
-                response.Close();
+                    return jObject;
+                }
+                else
+                {
+                    throw new Exception("Failed to download JSON from the URL.");
+                }
             }
-            if (request != null)
-            {
-                request.Abort();
-            }
-            JObject jObject = JObject.Parse(jsonString);
-            return jObject;
         }
     }
 }

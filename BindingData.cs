@@ -84,18 +84,8 @@ namespace sks_toolkit
         private string install_path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
         public string Install_path
         {
-            set { 
-                install_path = value;
-            }
+            set { install_path = value;}
             get { return install_path;}
-        }
-        public void StartDeployClicked()
-        {
-            Console.WriteLine("aaa");
-        }
-        public void SelectInstallFolder()
-        {
-            Console.WriteLine("bbb");
         }
     }
 }
