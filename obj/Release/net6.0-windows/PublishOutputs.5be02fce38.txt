@@ -1,0 +1,10 @@
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\Assets\avalonia-logo.ico
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\Assets\Config.json
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\Assets\Font.ttf
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\sks_toolkit.exe
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\sks_toolkit.dll
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\sks_toolkit.deps.json
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\sks_toolkit.runtimeconfig.json
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\sks_toolkit.pdb
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\HandyControl.dll
+E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\publish\Newtonsoft.Json.dll

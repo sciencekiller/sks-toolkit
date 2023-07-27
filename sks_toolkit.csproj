@@ -27,9 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\avalonia-logo.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Assets\Config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

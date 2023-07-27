@@ -7,9 +7,11 @@ E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.runtimecon
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.dll
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.pdb
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\HandyControl.dll
+E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.csproj.AssemblyReference.cache
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\MainWindow.g.cs
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\App.g.cs
+E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_Content.g.cs
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_MarkupCompile.cache
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_MarkupCompile.lref
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\App.baml
@@ -25,5 +27,3 @@ E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\refint\sks_toolkit.dll
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.pdb
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.genruntimeconfig.cache
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\ref\sks_toolkit.dll
-E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_Content.g.cs
