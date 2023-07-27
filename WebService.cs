@@ -33,5 +33,19 @@ namespace sks_toolkit
                 }
             }
         }
+        public static async void DownloadFile(string url,string path)
+        {
+            var http=new HttpClient();
+            var request=new HttpRequestMessage(HttpMethod.Get, url);
+            var response = await http.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            using(var fs = File.Open(path, FileMode.Create))
+            {
+                using(var ms = response.Content.ReadAsStream())
+                {
+                    await ms.CopyToAsync(fs);
+                }
+            }
+        }
     }
 }

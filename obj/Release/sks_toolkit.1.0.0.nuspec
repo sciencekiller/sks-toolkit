@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>sks_toolkit</id>
+    <version>1.0.0</version>
+    <authors>sks_toolkit</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="HandyControl" version="3.4.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows7.0/icon.ico" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\sks_toolkit.runtimeconfig.json" target="lib\net6.0-windows7.0\sks_toolkit.runtimeconfig.json" />
+    <file src="E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\sks_toolkit.dll" target="lib\net6.0-windows7.0\sks_toolkit.dll" />
+    <file src="E:\Github Repository\sks_toolkit\icon.ico" target="content\icon.ico" />
+    <file src="E:\Github Repository\sks_toolkit\icon.ico" target="contentFiles\any\net6.0-windows7.0\icon.ico" />
+  </files>
+</package>

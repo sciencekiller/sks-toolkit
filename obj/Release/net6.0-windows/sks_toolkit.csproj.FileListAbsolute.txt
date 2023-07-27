@@ -1,5 +1,4 @@
 E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\sks_toolkit.exe
-E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\Assets\avalonia-logo.ico
 E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\Assets\Config.json
 E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\Assets\Font.ttf
 E:\Github Repository\sks_toolkit\bin\Release\net6.0-windows\sks_toolkit.deps.json

@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -16,16 +17,21 @@ namespace sks_toolkit
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isselectfolder = false;
+        //声明全局变量
+        private bool isselectfolder = false;//是否已经提醒更改路径有风险 false没有 true有
+        private string cppversion = String.Empty;
         private BackgroundWorker worker;
-        internal static bool deploying = false;
-        BindingData data = new BindingData();//创建binding类
+        private bool installcpp=false;//是否安装C++
+        private string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
+        //数据绑定
+        BindingData data = new BindingData();
         Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
+
         public MainWindow()
         {
             InitializeComponent();
             Init();
-            worker = (BackgroundWorker)FindResource("Worker");
+            worker = (BackgroundWorker)FindResource("Worker");//获取BackgroundWorker
         }
         public async void Init()
         {
@@ -70,8 +76,7 @@ namespace sks_toolkit
             }
 
             //读取版本号
-            string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;
-            string configPath = workDictionary + "Assets\\\\Config.json";
+            string configPath = workDictionary + "Assets\\\\Config.json";//配置文件目录
             JObject Config;
             using (System.IO.StreamReader configFile = System.IO.File.OpenText(configPath))
             {
@@ -103,6 +108,7 @@ namespace sks_toolkit
             {
                 data.latestOrNot = "有新版本可用，请尽快查看";
             }
+            //获取C++下载列表
             List<string> gpp_version_list = new List<string>();
             string latest_gpp_version_list_url = "https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
             JObject latest_gpp_version_list = await WebService.DownloadJson(latest_gpp_version_list_url);
@@ -120,6 +126,7 @@ namespace sks_toolkit
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
         }
+        //重载设置进度的BackgroundWorker ReportProgress方法，使其可以更新文字
         public void report(int i, string message)
         {
             deploy_env_data.Message = message;
@@ -136,6 +143,7 @@ namespace sks_toolkit
             deploy_env_data.Message = message;
             worker.ReportProgress(deploy_env_data.Persent);
         }
+        //选择目录
         private void SelectInstallFolder(object sender, RoutedEventArgs e)
         {
             if (!isselectfolder)
@@ -163,38 +171,37 @@ namespace sks_toolkit
             deploy_env_data.Install_path = selectedFolder;
             Show_path.Text = selectedFolder;
         }
-
+        //开始部署，BackgroundWorker异步调用方法
         private void StartDeployClicked(object sender, RoutedEventArgs e)
         {
             stopDeploy.IsEnabled = true;
             Deploy_Progress.Value = 0;
             Deploy_Progress.Style = FindResource("ProgressBarInfo") as Style;
+            installcpp = install_gpp.IsChecked.Value;
+            cppversion = gpp_versions.SelectedValue.ToString();
             worker.RunWorkerAsync(Deploy_Progress);
         }
-
+        //部署工作
         private void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
 
             //Deploy 
-            for (int i = 1; i <= 100; i++)
+            if (installcpp)
             {
-                if (worker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-                report(i, i.ToString());
-                Thread.Sleep(100);
+                string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
+                Trace.WriteLine(gpp_download_url);
+                string downloadfolder = workDictionary;
+                WebService.DownloadFile(gpp_download_url, downloadfolder+"\\\\cpp.7z");
             }
         }
-
+        //更新进度函数
         private void Worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             Deploy_Progress.Value = e.ProgressPercentage;
             Deploy_Step.Text = deploy_env_data.Message;
         }
 
-
+        //工作结束函数
         private void Worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             stopDeploy.IsEnabled = false;
@@ -207,7 +214,7 @@ namespace sks_toolkit
             MessageBox.Success("部署工作已完成", "已完成");
             Deploy_Progress.Style = FindResource("ProgressBarSuccess") as Style;
         }
-
+        //停止部署
         private void Stop_Deploy(object sender, RoutedEventArgs e)
         {
             worker.CancelAsync();
