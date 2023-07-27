@@ -31,6 +31,7 @@ namespace sks_toolkit
         {
             data.CurrentUser = System.Environment.UserName;//获取用户名
             int TimeNow = System.DateTime.Now.Hour;//获取时间
+
             //根据时间指定问候
             if (TimeNow >= 1 && TimeNow < 5)
             {
@@ -67,6 +68,7 @@ namespace sks_toolkit
                 data.GreetingWord = "晚上好,";
                 data.GreetingSentence = "你在熬夜吗?";
             }
+
             //读取版本号
             string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;
             string configPath = workDictionary + "Assets\\\\Config.json";
@@ -78,14 +80,15 @@ namespace sks_toolkit
                     Config = (JObject)JToken.ReadFrom(jsonReader);
                 }
             }
-            data.Version = Config["version"].ToString();
-            data.Channel = Config["channel"].ToString();
-            data.Build = Config["build"].ToString();
-            //获取最新版本
+            data.Version = (Config["version"] ?? "1.0.0").ToString();
+            data.Channel = (Config["channel"] ?? "beta").ToString();
+            data.Build = (Config["build"] ?? "10000").ToString();
+
+            //获取最新版本号
             JObject LatestRelease = await WebService.DownloadJson("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
             if (LatestRelease != null)
             {
-                data.latestVersion = LatestRelease["version"].ToString();
+                data.latestVersion = (LatestRelease["version"] ?? "1.0.0").ToString();
             }
             else
             {
@@ -120,7 +123,7 @@ namespace sks_toolkit
         public void report(int i, string message)
         {
             deploy_env_data.Message = message;
-            deploy_env_data.Persent= i;
+            deploy_env_data.Persent = i;
             worker.ReportProgress(i);
         }
         public void report(int i)

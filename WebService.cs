@@ -22,7 +22,8 @@ namespace sks_toolkit
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    JObject jObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JObject notnull=new JObject();
+                    JObject jObject = JsonConvert.DeserializeObject<JObject>(json)??notnull;
 
                     return jObject;
                 }
