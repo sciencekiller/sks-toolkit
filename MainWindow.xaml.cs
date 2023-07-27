@@ -1,11 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using HandyControl.Tools;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using sks_toolkit.DeployENV;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
+using MessageBox = HandyControl.Controls.MessageBox;
+
 namespace sks_toolkit
 {
     /// <summary>
@@ -13,12 +16,16 @@ namespace sks_toolkit
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isselectfolder = false;
+        private BackgroundWorker worker;
+        internal static bool deploying = false;
         BindingData data = new BindingData();//创建binding类
         Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
         public MainWindow()
         {
             InitializeComponent();
             Init();
+            worker = (BackgroundWorker)FindResource("Worker");
         }
         public async void Init()
         {
@@ -110,10 +117,35 @@ namespace sks_toolkit
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
         }
-
+        public void report(int i, string message)
+        {
+            deploy_env_data.Message = message;
+            deploy_env_data.Persent= i;
+            worker.ReportProgress(i);
+        }
+        public void report(int i)
+        {
+            deploy_env_data.Persent = i;
+            worker.ReportProgress(i);
+        }
+        public void report(string message)
+        {
+            deploy_env_data.Message = message;
+            worker.ReportProgress(deploy_env_data.Persent);
+        }
         private void SelectInstallFolder(object sender, RoutedEventArgs e)
         {
-            string selectedFolder = string.Empty;
+            if (!isselectfolder)
+            {
+
+                MessageBoxResult iscontinue = MessageBox.Ask("更改路径可能引发各种各样奇奇怪怪的错误并且难以解决，我们推荐安装在默认目录，如果你需要更改路径，请确保你有能力解决此行为的后果，是否继续?", "确认");
+                if (iscontinue == MessageBoxResult.Cancel)
+                {
+                    return;
+                }
+                isselectfolder = true;
+            }
+            string selectedFolder = deploy_env_data.Install_path;
 
             using (var dialog = new FolderBrowserDialog())
             {
@@ -131,25 +163,51 @@ namespace sks_toolkit
 
         private void StartDeployClicked(object sender, RoutedEventArgs e)
         {
-            FreezeControls();
-            Deploy_main deploy = new Deploy_main();
-            Thread thread = new Thread(deploy.Deploy);
-            thread.Start();
+            stopDeploy.IsEnabled = true;
+            Deploy_Progress.Value = 0;
+            Deploy_Progress.Style = FindResource("ProgressBarInfo") as Style;
+            worker.RunWorkerAsync(Deploy_Progress);
         }
 
-        private void FreezeControls()
-        {
-            startdeploy.IsEnabled = false;
-            selectfolder.IsEnabled = false;
-        }
-        private void UnfreezeControls()
-        {
-            startdeploy.IsEnabled = true;
-            selectfolder.IsEnabled = true;
-        }
-        private void SetProgress()
+        private void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
 
+            //Deploy 
+            for (int i = 1; i <= 100; i++)
+            {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                report(i, i.ToString());
+                Thread.Sleep(100);
+            }
+        }
+
+        private void Worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            Deploy_Progress.Value = e.ProgressPercentage;
+            Deploy_Step.Text = deploy_env_data.Message;
+        }
+
+
+        private void Worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            stopDeploy.IsEnabled = false;
+            if (e.Cancelled)
+            {
+                MessageBox.Warning("部署工作已被用户取消", "已取消");
+                Deploy_Progress.Style = FindResource("ProgressBarDanger") as Style;
+                return;
+            }
+            MessageBox.Success("部署工作已完成", "已完成");
+            Deploy_Progress.Style = FindResource("ProgressBarSuccess") as Style;
+        }
+
+        private void Stop_Deploy(object sender, RoutedEventArgs e)
+        {
+            worker.CancelAsync();
         }
     }
 }

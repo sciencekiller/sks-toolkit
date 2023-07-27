@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sks_toolkit"
         xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=System"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1100">
+    <Window.Resources>
+        <componentModel:BackgroundWorker
+            x:Name="Worker"
+            x:Key="Worker"
+            DoWork="Worker_DoWork"
+            ProgressChanged="Worker_ProgressChanged"
+            RunWorkerCompleted="Worker_RunWorkerCompleted"
+            WorkerReportsProgress="True"
+            WorkerSupportsCancellation="True"/>
+    </Window.Resources>
     <TabControl FontFamily="{Binding Mode=OneWay, Source={StaticResource LocalFont}}" >
         <TabItem Header="主页" VerticalContentAlignment="Top">
             <Canvas x:Name="MainTab">
@@ -33,7 +44,10 @@
                 <TextBlock Canvas.Left="20" Canvas.Top="370">安装路径:</TextBlock>
                 <TextBlock Canvas.Left="80" Canvas.Top="370" Style="{StaticResource TextBlockDefaultPrimary}" x:Name="Show_path" Text="{Binding Install_path}"/>
                 <Button Canvas.Left="900" Canvas.Top="370" x:Name="selectfolder" Width="100" Style="{StaticResource ButtonWarning}" Click="SelectInstallFolder">更改路径</Button>
-                <Button Canvas.Left="900" Canvas.Top="400" x:Name="startdeploy" Width="100" Style="{StaticResource ButtonSuccess}" Click="StartDeployClicked">开始部署~</Button>
+                <Button Canvas.Left="900" Canvas.Top="410" x:Name="startdeploy" Width="100" Style="{StaticResource ButtonSuccess}" Click="StartDeployClicked">开始部署~</Button>
+                <ProgressBar Canvas.Left="20" Canvas.Top="440" Width="400" Height="20" Maximum="100" Minimum="0" Value="0" x:Name="Deploy_Progress" Style="{StaticResource ProgressBarInfo}"/>
+                <Button Canvas.Left="500" Canvas.Top="440" x:Name="stopDeploy" Click="Stop_Deploy" IsEnabled="False" Style="{StaticResource ButtonDanger}">停止部署</Button>
+                <TextBlock Canvas.Left="20" Canvas.Top="410" x:Name="Deploy_Step" Text="{Binding Message}" Width="300"/>
             </Canvas>
         </TabItem>
         <TabItem Header="关于" VerticalContentAlignment="Top">

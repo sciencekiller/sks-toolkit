@@ -87,5 +87,17 @@ namespace sks_toolkit
             set { install_path = value;}
             get { return install_path;}
         }
+        private string message="";
+        public string Message
+        {
+            set { message = value; }
+            get { return message; }
+        }
+        private int persent = 0;
+        public int Persent
+        {
+            set { persent = value; }
+            get { return persent; }
+        }
     }
 }
