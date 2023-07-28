@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace sks_toolkit
@@ -22,8 +18,8 @@ namespace sks_toolkit
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    JObject notnull=new JObject();
-                    JObject jObject = JsonConvert.DeserializeObject<JObject>(json)??notnull;
+                    JObject notnull = new JObject();
+                    JObject jObject = JsonConvert.DeserializeObject<JObject>(json) ?? notnull;
 
                     return jObject;
                 }
@@ -33,18 +29,47 @@ namespace sks_toolkit
                 }
             }
         }
-        public static async void DownloadFile(string url,string path)
+        public static async void DownloadFile(string url, string path)
         {
-            var http=new HttpClient();
-            var request=new HttpRequestMessage(HttpMethod.Get, url);
+            var http = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
             var response = await http.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            using(var fs = File.Open(path, FileMode.Create))
+            using (var fs = File.Open(path, FileMode.Create))
             {
-                using(var ms = response.Content.ReadAsStream())
+                using (var ms = response.Content.ReadAsStream())
                 {
                     await ms.CopyToAsync(fs);
                 }
+            }
+        }
+        private static async Task DownloadFileNew(string url, FileInfo file)
+        {
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(url);
+
+            try
+            {
+                var n = response.Content.Headers.ContentLength;
+                var stream = await response.Content.ReadAsStreamAsync();
+                using (var fileStream = file.Create()) {
+                    using (stream)
+                    {
+                        byte[] buffer = new byte[1024];
+                        var readLength = 0; 
+                        int length;
+                        while ((length = await stream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                        {
+                            readLength += length;
+
+                            Console.WriteLine("下载进度" + ((double)readLength) / n * 100);
+                            fileStream.Write(buffer, 0, length);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
             }
         }
     }
