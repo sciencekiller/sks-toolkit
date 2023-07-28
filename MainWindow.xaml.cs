@@ -25,7 +25,7 @@ namespace sks_toolkit
         private string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
         //数据绑定
         BindingData data = new BindingData();
-        Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
+        internal static Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
 
         public MainWindow()
         {
@@ -182,7 +182,7 @@ namespace sks_toolkit
             worker.RunWorkerAsync(Deploy_Progress);
         }
         //部署工作
-        private void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private async void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
 
             //Deploy 
@@ -191,7 +191,7 @@ namespace sks_toolkit
                 string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
                 Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
-                WebService.DownloadFile(gpp_download_url, downloadfolder+"\\\\cpp.7z");
+                await WebService.DownloadFileNew(gpp_download_url, downloadfolder+"\\\\cpp.7z",worker);
             }
         }
         //更新进度函数

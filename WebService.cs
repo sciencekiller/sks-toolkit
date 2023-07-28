@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace sks_toolkit
@@ -43,11 +47,11 @@ namespace sks_toolkit
                 }
             }
         }
-        private static async Task DownloadFileNew(string url, FileInfo file)
+        internal static async Task DownloadFileNew(string url, string path,BackgroundWorker worker)
         {
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
-
+            var file=new FileInfo(path);
             try
             {
                 var n = response.Content.Headers.ContentLength;
@@ -61,8 +65,9 @@ namespace sks_toolkit
                         while ((length = await stream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                         {
                             readLength += length;
-
-                            Console.WriteLine("下载进度" + ((double)readLength) / n * 100);
+                            double temp = (double)(readLength) / (double)n * 100;
+                            MainWindow.deploy_env_data.Message = "下载C++ " + temp + "%";
+                            worker.ReportProgress((int)temp);
                             fileStream.Write(buffer, 0, length);
                         }
                     }
@@ -70,6 +75,7 @@ namespace sks_toolkit
             }
             catch (Exception e)
             {
+                Trace.WriteLine(e.ToString());
             }
         }
     }
