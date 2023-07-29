@@ -1,34 +1,34 @@
 {
   "8.1.0-sjlj": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z",
     "os": "-1"
   },
   "8.1.0-seh": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z",
     "os": "-1"
   },
   "7.3.0-sjlj": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-7.3.0-release-win32-sjlj-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-7.3.0-release-win32-sjlj-rt_v5-rev0.7z",
     "os": "-1"
   },
   "7.3.0-seh": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-7.3.0-release-win32-seh-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-7.3.0-release-win32-seh-rt_v5-rev0.7z",
     "os": "-1"
   },
   "6.4.0-sjlj": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-6.4.0-release-win32-sjlj-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-6.4.0-release-win32-sjlj-rt_v5-rev0.7z",
     "os": "-1"
   },
   "6.4.0-seh": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-6.4.0-release-win32-seh-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-6.4.0-release-win32-seh-rt_v5-rev0.7z",
     "os": "-1"
   },
   "5.4.0-sjlj": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-5.4.0-release-win32-sjlj-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-5.4.0-release-win32-sjlj-rt_v5-rev0.7z",
     "os": "-1"
   },
   "5.4.0-seh": {
-    "url": "https://gitee.com/sciencekiller/downloads/raw/main/x86_64-5.4.0-release-win32-seh-rt_v5-rev0.7z",
+    "url": "https://raw.njuu.cf/sciencekiller/downloads/main/x86_64-5.4.0-release-win32-seh-rt_v5-rev0.7z",
     "os": "-1"
   }
 }
