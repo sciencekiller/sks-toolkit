@@ -43,6 +43,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "Downloader": {
+              "target": "Package",
+              "version": "[3.0.6, )"
+            },
             "HandyControl": {
               "target": "Package",
               "version": "[3.4.0, )"

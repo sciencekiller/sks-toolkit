@@ -1,10 +1,12 @@
-﻿using HandyControl.Tools;
+﻿using Downloader;
+using HandyControl.Tools;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Net;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -90,7 +92,7 @@ namespace sks_toolkit
             data.Build = (Config["build"] ?? "10000").ToString();
 
             //获取最新版本号
-            JObject LatestRelease = await WebService.DownloadJson("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
+            JObject LatestRelease = await WebService.DownloadJson("https://hub.njuu.cf/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
             if (LatestRelease != null)
             {
                 data.latestVersion = (LatestRelease["version"] ?? "1.0.0").ToString();
@@ -110,7 +112,7 @@ namespace sks_toolkit
             }
             //获取C++下载列表
             List<string> gpp_version_list = new List<string>();
-            string latest_gpp_version_list_url = "https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
+            string latest_gpp_version_list_url = "https://hub.njuu.cf/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
             JObject latest_gpp_version_list = await WebService.DownloadJson(latest_gpp_version_list_url);
             foreach (var gpp_version in latest_gpp_version_list)
             {
@@ -191,9 +193,7 @@ namespace sks_toolkit
                 string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
                 Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
-                await WebService.DownloadFile(gpp_download_url, downloadfolder+"\\\\cpp.7z");
-                long downloadsize = WebService.GetFileSize(gpp_download_url).Result;
-                Trace.WriteLine(downloadsize);
+                
             }
         }
         //更新进度函数

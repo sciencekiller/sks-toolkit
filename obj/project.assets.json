@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "Downloader/3.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Downloader.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Downloader.dll": {}
+        }
+      },
       "HandyControl/3.4.0": {
         "type": "package",
         "compile": {
@@ -31,6 +40,25 @@
     }
   },
   "libraries": {
+    "Downloader/3.0.6": {
+      "sha512": "rfouSmoUCSDzZgbtwlqI9CKHd996p4Ejdhw5Smq3eJUDYcjCwC7yHgaQVSUEV3EzvbD3ArwACpAsqvi33EBrwA==",
+      "type": "package",
+      "path": "downloader/3.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "downloader.3.0.6.nupkg.sha512",
+        "downloader.nuspec",
+        "downloader.png",
+        "lib/net452/Downloader.dll",
+        "lib/net6.0/Downloader.dll",
+        "lib/netcoreapp3.1/Downloader.dll",
+        "lib/netstandard2.0/Downloader.dll",
+        "lib/netstandard2.1/Downloader.dll"
+      ]
+    },
     "HandyControl/3.4.0": {
       "sha512": "MgD5lxIm23oCv3+mFWH6EARLCOmR/spFaWeb813QtUDIQeUsbGK02xm1xDQEd0UGBcba6aho1FgCtiU4q7hHDw==",
       "type": "package",
@@ -118,6 +146,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Downloader >= 3.0.6",
       "HandyControl >= 3.4.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
@@ -165,6 +194,10 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Downloader": {
+            "target": "Package",
+            "version": "[3.0.6, )"
+          },
           "HandyControl": {
             "target": "Package",
             "version": "[3.4.0, )"

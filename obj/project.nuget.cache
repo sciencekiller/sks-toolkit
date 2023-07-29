@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "inT2bz2NiiFrKoDEHhawhF2f3A1yaSh1nO9lFEcHtb5GTjKn2uNRPv7CjiNcTZq9M2lkarkNTWxVtjms2OyOdQ==",
+  "dgSpecHash": "qwc7Gi8+KcHS/3GQSnFgEul5vLxWFSV1X3fKq/QWzM+2zOqLLV6mZlBgBBoKsgxLvZ7z2ZuOGe/8ctcv6zjqaQ==",
   "success": true,
   "projectFilePath": "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\scien\\.nuget\\packages\\downloader\\3.0.6\\downloader.3.0.6.nupkg.sha512",
     "C:\\Users\\scien\\.nuget\\packages\\handycontrol\\3.4.0\\handycontrol.3.4.0.nupkg.sha512",
     "C:\\Users\\scien\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
