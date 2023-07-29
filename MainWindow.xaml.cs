@@ -191,7 +191,9 @@ namespace sks_toolkit
                 string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
                 Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
-                await WebService.DownloadFileNew(gpp_download_url, downloadfolder+"\\\\cpp.7z",worker);
+                await WebService.DownloadFile(gpp_download_url, downloadfolder+"\\\\cpp.7z");
+                long downloadsize = WebService.GetFileSize(gpp_download_url).Result;
+                Trace.WriteLine(downloadsize);
             }
         }
         //更新进度函数
