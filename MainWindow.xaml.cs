@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = HandyControl.Controls.MessageBox;
@@ -23,8 +25,8 @@ namespace sks_toolkit
         //声明全局变量
         private bool isselectfolder = false;//是否已经提醒更改路径有风险 false没有 true有
         private string cppversion = String.Empty;
-        private BackgroundWorker worker;
-        private bool installcpp=false;//是否安装C++
+        private static BackgroundWorker? worker;
+        private bool installcpp = false;//是否安装C++
         private string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
         //数据绑定
         BindingData data = new BindingData();
@@ -130,18 +132,18 @@ namespace sks_toolkit
             DeployEnvTab.DataContext = deploy_env_data;
         }
         //重载设置进度的BackgroundWorker ReportProgress方法，使其可以更新文字
-        public void report(int i, string message)
+        public static void report(int i, string message)
         {
             deploy_env_data.Message = message;
             deploy_env_data.Persent = i;
             worker.ReportProgress(i);
         }
-        public void report(int i)
+        public static void report(int i)
         {
             deploy_env_data.Persent = i;
             worker.ReportProgress(i);
         }
-        public void report(string message)
+        public static void report(string message)
         {
             deploy_env_data.Message = message;
             worker.ReportProgress(deploy_env_data.Persent);
@@ -174,16 +176,7 @@ namespace sks_toolkit
             deploy_env_data.Install_path = selectedFolder;
             Show_path.Text = selectedFolder;
         }
-        //开始部署，BackgroundWorker异步调用方法
-        private void StartDeployClicked(object sender, RoutedEventArgs e)
-        {
-            stopDeploy.IsEnabled = true;
-            Deploy_Progress.Value = 0;
-            Deploy_Progress.Style = FindResource("ProgressBarInfo") as Style;
-            installcpp = install_gpp.IsChecked.Value;
-            cppversion = gpp_versions.SelectedValue.ToString();
-            worker.RunWorkerAsync(Deploy_Progress);
-        }
+        //downloader多线程下载文件方法
         private static DownloadConfiguration GetDownloadConfiguration()
         {
             var cookies = new CookieContainer();
@@ -225,6 +218,64 @@ namespace sks_toolkit
                 }
             };
         }
+        private static DownloadService CreateDownloadService(DownloadConfiguration config)
+        {
+            var downloadService = new DownloadService(config);
+
+            // Provide `FileName` and `TotalBytesToReceive` at the start of each downloads
+            downloadService.DownloadStarted += OnDownloadStarted;
+
+            // Provide any information about chunker downloads, 
+            // like progress percentage per chunk, speed, 
+            // total received bytes and received bytes array to live streaming.
+            //downloadService.ChunkDownloadProgressChanged += OnChunkDownloadProgressChanged;
+
+            // Provide any information about download progress, 
+            // like progress percentage of sum of chunks, total speed, 
+            // average speed, total received bytes and received bytes array 
+            // to live streaming.
+            downloadService.DownloadProgressChanged += OnDownloadProgressChanged;
+
+            // Download completed event that can include occurred errors or 
+            // cancelled or download completed successfully.
+            downloadService.DownloadFileCompleted += OnDownloadFileCompleted;
+
+            return downloadService;
+        }
+
+        private static void OnDownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
+        {
+            report("C++下载完成");
+        }
+
+        private static void OnDownloadProgressChanged(object? sender, Downloader.DownloadProgressChangedEventArgs e)
+        {
+            report((int)e.ProgressPercentage, "下载C++ " + (int)e.ProgressPercentage + "%");
+        }
+
+        private static void OnDownloadStarted(object? sender, DownloadStartedEventArgs e)
+        {
+            report("准备下载C++");
+        }
+
+        private static async Task<DownloadService> DownloadFile(string url, string path)
+        {
+            var CurrentDownloadConfiguration = GetDownloadConfiguration();
+            var CurrentDownloadService = CreateDownloadService(CurrentDownloadConfiguration);
+            await CurrentDownloadService.DownloadFileTaskAsync(url, path).ConfigureAwait(false);
+            return CurrentDownloadService;
+        }
+        //开始部署，BackgroundWorker异步调用方法
+        private void StartDeployClicked(object sender, RoutedEventArgs e)
+        {
+            stopDeploy.IsEnabled = true;
+            Deploy_Progress.Value = 0;
+            Deploy_Progress.Style = FindResource("ProgressBarInfo") as Style;
+            installcpp = install_gpp.IsChecked.Value;
+            cppversion = gpp_versions.SelectedValue.ToString();
+            worker.RunWorkerAsync(Deploy_Progress);
+        }
+
         //部署工作
         private async void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -235,8 +286,7 @@ namespace sks_toolkit
                 string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
                 Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
-                var downloader = new DownloadService(GetDownloadConfiguration());
-                await downloader.DownloadFileTaskAsync(gpp_download_url, downloadfolder + "\\\\cpp.7z");
+
             }
         }
         //更新进度函数
