@@ -1,12 +1,10 @@
 ﻿using Downloader;
-using HandyControl.Tools;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Threading;
@@ -25,9 +23,11 @@ namespace sks_toolkit
         //声明全局变量
         private bool isselectfolder = false;//是否已经提醒更改路径有风险 false没有 true有
         private string cppversion = String.Empty;
-        private static BackgroundWorker? worker;
+        private bool isdeploycancel = false;
         private bool installcpp = false;//是否安装C++
         private string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
+        private DownloadService CurrentDownloadService;
+
         //数据绑定
         BindingData data = new BindingData();
         internal static Deploy_ENV_Data deploy_env_data = new Deploy_ENV_Data();
@@ -36,8 +36,9 @@ namespace sks_toolkit
         {
             InitializeComponent();
             Init();
-            worker = (BackgroundWorker)FindResource("Worker");//获取BackgroundWorker
+            //worker = (BackgroundWorker)FindResource("Worker");//获取BackgroundWorker
         }
+
         public async void Init()
         {
             data.CurrentUser = System.Environment.UserName;//获取用户名
@@ -131,23 +132,7 @@ namespace sks_toolkit
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
         }
-        //重载设置进度的BackgroundWorker ReportProgress方法，使其可以更新文字
-        public static void report(int i, string message)
-        {
-            deploy_env_data.Message = message;
-            deploy_env_data.Persent = i;
-            worker.ReportProgress(i);
-        }
-        public static void report(int i)
-        {
-            deploy_env_data.Persent = i;
-            worker.ReportProgress(i);
-        }
-        public static void report(string message)
-        {
-            deploy_env_data.Message = message;
-            worker.ReportProgress(deploy_env_data.Persent);
-        }
+
         //选择目录
         private void SelectInstallFolder(object sender, RoutedEventArgs e)
         {
@@ -176,6 +161,7 @@ namespace sks_toolkit
             deploy_env_data.Install_path = selectedFolder;
             Show_path.Text = selectedFolder;
         }
+
         //downloader多线程下载文件方法
         private static DownloadConfiguration GetDownloadConfiguration()
         {
@@ -185,7 +171,7 @@ namespace sks_toolkit
             return new DownloadConfiguration
             {
                 BufferBlockSize = 10240,    // usually, hosts support max to 8000 bytes, default values is 8000
-                ChunkCount = 64,             // file parts to download, default value is 1
+                ChunkCount = 128,             // file parts to download, default value is 1
                 MaximumBytesPerSecond = 1024 * 1024 * 10, // download speed limited to 10MB/s, default values is zero or unlimited
                 MaxTryAgainOnFailover = 5,  // the maximum number of times to fail
                 MaximumMemoryBufferBytes = 1024 * 1024 * 50, // release memory buffer after each 50 MB
@@ -218,7 +204,7 @@ namespace sks_toolkit
                 }
             };
         }
-        private static DownloadService CreateDownloadService(DownloadConfiguration config)
+        private DownloadService CreateDownloadService(DownloadConfiguration config)
         {
             var downloadService = new DownloadService(config);
 
@@ -243,76 +229,99 @@ namespace sks_toolkit
             return downloadService;
         }
 
-        private static void OnDownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
+        private void OnDownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
         {
-            report("C++下载完成");
+            Dispatcher.Invoke(
+                   new Action(
+                        delegate
+                        {
+                            if (e.Cancelled)
+                                Deploy_Step.Text = "取消下载";
+                            else
+                                Deploy_Step.Text = "C++下载完成";
+                        }
+                   )
+             );
+            Thread.Sleep(3000);
         }
 
-        private static void OnDownloadProgressChanged(object? sender, Downloader.DownloadProgressChangedEventArgs e)
+        private void OnDownloadProgressChanged(object? sender, Downloader.DownloadProgressChangedEventArgs e)
         {
-            report((int)e.ProgressPercentage, "下载C++ " + (int)e.ProgressPercentage + "%");
+            Dispatcher.Invoke(
+                   new Action(
+                        delegate
+                        {
+                            Deploy_Progress.Value = e.ProgressPercentage;
+                            Deploy_Step.Text = "下载C++ " + ((int)e.ProgressPercentage).ToString() + "%";
+                        }
+                   )
+             );
+
         }
 
-        private static void OnDownloadStarted(object? sender, DownloadStartedEventArgs e)
+        private void OnDownloadStarted(object? sender, DownloadStartedEventArgs e)
         {
-            report("准备下载C++");
+            Dispatcher.Invoke(
+                   new Action(
+                        delegate
+                        {
+                            Deploy_Step.Text = "准备下载C++";
+                        }
+                   )
+             );
+            Thread.Sleep(3000);
         }
 
-        private static async Task<DownloadService> DownloadFile(string url, string path)
+        private async Task<DownloadService> DownloadFile(string url, string path)
         {
             var CurrentDownloadConfiguration = GetDownloadConfiguration();
-            var CurrentDownloadService = CreateDownloadService(CurrentDownloadConfiguration);
-            await CurrentDownloadService.DownloadFileTaskAsync(url, path).ConfigureAwait(false);
+            CurrentDownloadService = CreateDownloadService(CurrentDownloadConfiguration);
+            await CurrentDownloadService.DownloadFileTaskAsync(url, path);
             return CurrentDownloadService;
         }
         //开始部署，BackgroundWorker异步调用方法
-        private void StartDeployClicked(object sender, RoutedEventArgs e)
+        private async void StartDeployClicked(object sender, RoutedEventArgs e)
         {
             stopDeploy.IsEnabled = true;
             Deploy_Progress.Value = 0;
             Deploy_Progress.Style = FindResource("ProgressBarInfo") as Style;
             installcpp = install_gpp.IsChecked.Value;
-            cppversion = gpp_versions.SelectedValue.ToString();
-            worker.RunWorkerAsync(Deploy_Progress);
+            cppversion = gpp_versions.SelectedValue.ToString() ?? "ERROR";
+            await Deploy();
         }
 
         //部署工作
-        private async void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private async Task Deploy()
         {
-
+            MessageBox.Info("因为要从部署在Vercel的美国服务器下载资源(没钱买服务器)，虽然已经用了多线程下载技术，但还是会慢一点", "提示");
+            Deploy_Step.Text = "准备部署...";
+            Thread.Sleep(3000);
             //Deploy 
             if (installcpp)
             {
-                string gpp_download_url = (deploy_env_data.Download_Link[cppversion])["url"].ToString();
+                string gpp_download_url = deploy_env_data.Download_Link[cppversion]["url"].ToString();
                 Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
-
+                await DownloadFile(gpp_download_url, downloadfolder + gpp_download_url.Split('/')[3]);
             }
-        }
-        //更新进度函数
-        private void Worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-            Deploy_Progress.Value = e.ProgressPercentage;
-            Deploy_Step.Text = deploy_env_data.Message;
-        }
-
-        //工作结束函数
-        private void Worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            stopDeploy.IsEnabled = false;
-            if (e.Cancelled)
+            Deploy_Progress.Value = 100;
+            if (isdeploycancel)
             {
-                MessageBox.Warning("部署工作已被用户取消", "已取消");
                 Deploy_Progress.Style = FindResource("ProgressBarDanger") as Style;
-                return;
+                MessageBox.Error("用户已将部署取消", "已取消");
             }
-            MessageBox.Success("部署工作已完成", "已完成");
-            Deploy_Progress.Style = FindResource("ProgressBarSuccess") as Style;
+            else
+            {
+                Deploy_Progress.Style = FindResource("ProgressBarSuccess") as Style;
+                MessageBox.Success("所有部署任务均已完成", "已完成");
+            }
+            stopDeploy.IsEnabled = false;
         }
         //停止部署
         private void Stop_Deploy(object sender, RoutedEventArgs e)
         {
-            worker.CancelAsync();
+            CurrentDownloadService.CancelAsync();
+            isdeploycancel = true;
         }
     }
 }

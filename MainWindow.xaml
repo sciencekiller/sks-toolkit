@@ -9,14 +9,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1100">
     <Window.Resources>
-        <componentModel:BackgroundWorker
+        <!--<componentModel:BackgroundWorker
             x:Name="Worker"
             x:Key="Worker"
             DoWork="Worker_DoWork"
             ProgressChanged="Worker_ProgressChanged"
             RunWorkerCompleted="Worker_RunWorkerCompleted"
             WorkerReportsProgress="True"
-            WorkerSupportsCancellation="True"/>
+            WorkerSupportsCancellation="True"/>-->
     </Window.Resources>
     <TabControl FontFamily="{Binding Mode=OneWay, Source={StaticResource LocalFont}}" >
         <TabItem Header="主页" VerticalContentAlignment="Top">

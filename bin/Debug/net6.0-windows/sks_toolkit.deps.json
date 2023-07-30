@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v6.0": {
       "sks_toolkit/1.0.0": {
         "dependencies": {
+          "Downloader": "3.0.6",
           "HandyControl": "3.4.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "sks_toolkit.dll": {}
+        }
+      },
+      "Downloader/3.0.6": {
+        "runtime": {
+          "lib/net6.0/Downloader.dll": {
+            "assemblyVersion": "3.0.6.0",
+            "fileVersion": "3.0.6.0"
+          }
         }
       },
       "HandyControl/3.4.0": {
@@ -38,6 +47,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Downloader/3.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rfouSmoUCSDzZgbtwlqI9CKHd996p4Ejdhw5Smq3eJUDYcjCwC7yHgaQVSUEV3EzvbD3ArwACpAsqvi33EBrwA==",
+      "path": "downloader/3.0.6",
+      "hashPath": "downloader.3.0.6.nupkg.sha512"
     },
     "HandyControl/3.4.0": {
       "type": "package",

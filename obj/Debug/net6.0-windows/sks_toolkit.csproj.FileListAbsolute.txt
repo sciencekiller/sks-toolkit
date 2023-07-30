@@ -26,3 +26,4 @@ E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\refint\sks_toolkit.dll
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.pdb
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.genruntimeconfig.cache
 E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\ref\sks_toolkit.dll
+E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Downloader.dll
