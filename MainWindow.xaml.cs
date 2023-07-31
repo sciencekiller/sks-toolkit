@@ -1,6 +1,7 @@
 ﻿using Downloader;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SevenZip;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +29,8 @@ namespace sks_toolkit
         private string cppversion = String.Empty;
         private bool isdeploycancel = false;
         private bool installcpp = false;//是否安装C++
-        private string workDictionary = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
+        private bool cppdownload = true;//是否下载C++
+        private string workDirectory = System.AppDomain.CurrentDomain.BaseDirectory;//获取工作目录
         private DownloadService CurrentDownloadService;
 
         //数据绑定
@@ -84,7 +87,7 @@ namespace sks_toolkit
             }
 
             //读取版本号
-            string configPath = workDictionary + "Assets\\\\Config.json";//配置文件目录
+            string configPath = workDirectory + "Assets\\\\Config.json";//配置文件目录
             JObject Config;
             using (System.IO.StreamReader configFile = System.IO.File.OpenText(configPath))
             {
@@ -255,7 +258,7 @@ namespace sks_toolkit
                         delegate
                         {
                             Deploy_Progress.Value = e.ProgressPercentage;
-                            Deploy_Step.Text = "下载C++ " + ((int)e.ProgressPercentage).ToString() + "%";
+                            Deploy_Step.Text = "下载C++ " + ((int)e.ProgressPercentage*0.5).ToString() + "%";
                         }
                    )
              );
@@ -308,6 +311,32 @@ namespace sks_toolkit
             return false;
         }
 
+        //获取md5
+
+        internal string Getmd5(string fileName)
+        {
+            StringBuilder sb = new StringBuilder();
+            try
+            {
+                FileStream file = new FileStream(fileName, FileMode.Open);
+                System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(file);
+                file.Close();
+
+                
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+                Console.WriteLine(sb.ToString());
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.ToString());
+            }
+            return sb.ToString();
+        }
+
         //部署工作
         private async Task Deploy()
         {
@@ -315,14 +344,41 @@ namespace sks_toolkit
             MessageBox.Info("因为要从部署在Vercel的美国服务器下载资源(没钱买服务器)，虽然已经用了多线程下载技术，但还是会慢一点", "提示");
             Deploy_Step.Text = "准备部署...";
             //开始部署
+            if (IntPtr.Size == 4)
+            {
+                SevenZipBase.SetLibraryPath(workDirectory + "\\\\Assets\\\\7z.dll");
+            }
+            else
+            {
+                SevenZipBase.SetLibraryPath(workDirectory + "\\\\Assets\\\\7z64.dll");
+            }
+            string downloadfolder = workDirectory;//下载目录
             //C++
             if (installcpp/*&&!FindMinGW()*/)//未安装，部署
             {
+                //下载C++
                 string gpp_download_url = deploy_env_data.Download_Link[cppversion]["url"].ToString();//获取下载链接
-                //Trace.WriteLine(gpp_download_url);
-                string downloadfolder = workDictionary;
-                await DownloadFile(gpp_download_url, downloadfolder + gpp_download_url.Split('/')[3]);
-            }else if (installcpp && FindMinGW())//已安装，跳过
+                if(File.Exists(downloadfolder + gpp_download_url.Split('/')[3])) { //文件存在
+                    //获取文件md5
+                    var md5=Getmd5(downloadfolder + gpp_download_url.Split('/')[3]);
+                    if (md5 == deploy_env_data.Download_Link[cppversion]["md5"].ToString())//文件已下载
+                    {
+                        cppdownload = false;//不再下载
+                    }
+                }
+                if (cppdownload)//未下载或损坏
+                {
+                    await DownloadFile(gpp_download_url, downloadfolder + gpp_download_url.Split('/')[3]);
+                }
+                Deploy_Progress.Value = 50;
+                Deploy_Step.Text = "解压C++...";
+                //解压C++
+                using (var tmp = new SevenZipExtractor(downloadfolder + gpp_download_url.Split('/')[3]))
+                {
+                    tmp.ExtractArchive(deploy_env_data.Install_path);
+                }
+            }
+            else if (installcpp && FindMinGW())//已安装，跳过
             {
                 MessageBox.Info("检测到用户机已经安装Mingw-w64，自动跳过", "跳过安装");
             }

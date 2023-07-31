@@ -30,3 +30,35 @@ E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Downloader.dll
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\SevenZipSharp.dll
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\7z.dll
 E:\Github Repository\sks_toolkit\bin\Debug\net6.0-windows\Assets\7z64.dll
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.csproj.AssemblyReference.cache
+M:\sks_toolkit\obj\Debug\net6.0-windows\MainWindow.g.cs
+M:\sks_toolkit\obj\Debug\net6.0-windows\App.g.cs
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_Content.g.cs
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_MarkupCompile.cache
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit_MarkupCompile.lref
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.dll
+M:\sks_toolkit\obj\Debug\net6.0-windows\refint\sks_toolkit.dll
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.pdb
+M:\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.exe
+M:\sks_toolkit\bin\Debug\net6.0-windows\Assets\7z.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\Assets\7z64.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\Assets\Config.json
+M:\sks_toolkit\bin\Debug\net6.0-windows\Assets\Font.ttf
+M:\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.deps.json
+M:\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.runtimeconfig.json
+M:\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\sks_toolkit.pdb
+M:\sks_toolkit\bin\Debug\net6.0-windows\Downloader.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\HandyControl.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+M:\sks_toolkit\bin\Debug\net6.0-windows\SevenZipSharp.dll
+M:\sks_toolkit\obj\Debug\net6.0-windows\App.baml
+M:\sks_toolkit\obj\Debug\net6.0-windows\MainWindow.baml
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.g.resources
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.GeneratedMSBuildEditorConfig.editorconfig
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.AssemblyInfoInputs.cache
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.AssemblyInfo.cs
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.csproj.CoreCompileInputs.cache
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.csproj.CopyComplete
+M:\sks_toolkit\obj\Debug\net6.0-windows\sks_toolkit.genruntimeconfig.cache
+M:\sks_toolkit\obj\Debug\net6.0-windows\ref\sks_toolkit.dll
