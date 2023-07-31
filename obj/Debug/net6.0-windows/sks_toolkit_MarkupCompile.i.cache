@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Github Repository\sks_toolkit\obj\Debug\net6.0-windows\
+M:\sks_toolkit\obj\Debug\net6.0-windows\
 sks_toolkit
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-E:\Github Repository\sks_toolkit\App.xaml
+M:\sks_toolkit\App.xaml
 11407045341
 1-1606303973
 7463741644
-2061832757753
+207-149916413
 MainWindow.xaml;
 
 False

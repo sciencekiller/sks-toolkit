@@ -21,6 +21,7 @@
     <PackageReference Include="Downloader" Version="3.0.6" />
     <PackageReference Include="HandyControl" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Squid-Box.SevenZipSharp" Version="1.6.1.23" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\7z64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\Config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

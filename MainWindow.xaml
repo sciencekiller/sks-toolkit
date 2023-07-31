@@ -44,7 +44,7 @@
                 <TextBlock Canvas.Left="20" Canvas.Top="370">安装路径:</TextBlock>
                 <TextBlock Canvas.Left="80" Canvas.Top="370" Style="{StaticResource TextBlockDefaultPrimary}" x:Name="Show_path" Text="{Binding Install_path}"/>
                 <Button Canvas.Left="900" Canvas.Top="370" x:Name="selectfolder" Width="100" Style="{StaticResource ButtonWarning}" Click="SelectInstallFolder">更改路径</Button>
-                <Button Canvas.Left="900" Canvas.Top="410" x:Name="startdeploy" Width="100" Style="{StaticResource ButtonSuccess}" Click="StartDeployClicked">开始部署~</Button>
+                <Button Canvas.Left="900" Canvas.Top="410" x:Name="startdeploy" IsEnabled="false" Width="100" Style="{StaticResource ButtonSuccess}" Click="StartDeployClicked">开始部署~</Button>
                 <ProgressBar Canvas.Left="20" Canvas.Top="440" Width="400" Height="20" Maximum="100" Minimum="0" Value="0" x:Name="Deploy_Progress" Style="{StaticResource ProgressBarInfo}"/>
                 <Button Canvas.Left="500" Canvas.Top="440" x:Name="stopDeploy" Click="Stop_Deploy" IsEnabled="False" Style="{StaticResource ButtonDanger}">停止部署</Button>
                 <TextBlock Canvas.Left="20" Canvas.Top="410" x:Name="Deploy_Step" Text="{Binding Message}" Width="300"/>

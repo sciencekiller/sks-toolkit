@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj": {}
+    "M:\\sks_toolkit\\sks_toolkit.csproj": {}
   },
   "projects": {
-    "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj": {
+    "M:\\sks_toolkit\\sks_toolkit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj",
+        "projectUniqueName": "M:\\sks_toolkit\\sks_toolkit.csproj",
         "projectName": "sks_toolkit",
-        "projectPath": "E:\\Github Repository\\sks_toolkit\\sks_toolkit.csproj",
+        "projectPath": "M:\\sks_toolkit\\sks_toolkit.csproj",
         "packagesPath": "C:\\Users\\scien\\.nuget\\packages\\",
-        "outputPath": "E:\\Github Repository\\sks_toolkit\\obj\\",
+        "outputPath": "M:\\sks_toolkit\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual Studio\\SDK\\NuGetPackages"
@@ -54,6 +54,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Squid-Box.SevenZipSharp": {
+              "target": "Package",
+              "version": "[1.6.1.23, )"
             }
           },
           "imports": [

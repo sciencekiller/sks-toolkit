@@ -1,34 +1,42 @@
 {
   "8.1.0-sjlj": {
     "url": "https://download.sciencekill.top/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "16ddfb4736111cb004bac788bd1aa72a"
   },
   "8.1.0-seh": {
     "url": "https://download.sciencekill.top/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "ebe9cf22aa13c9e34f5e684a79efaf8e"
   },
   "7.3.0-sjlj": {
     "url": "https://download.sciencekill.top/x86_64-7.3.0-release-win32-sjlj-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "b702d322efecd98ca9df7420ab0095a8"
   },
   "7.3.0-seh": {
     "url": "https://download.sciencekill.top/x86_64-7.3.0-release-win32-seh-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "55ee71cd9b6e6c96bf55abe93aeb15ae"
   },
   "6.4.0-sjlj": {
     "url": "https://download.sciencekill.top/x86_64-6.4.0-release-win32-sjlj-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "f97ea64f525d316fa08d36b9f7bd7415"
   },
   "6.4.0-seh": {
     "url": "https://download.sciencekill.top/x86_64-6.4.0-release-win32-seh-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "d09fb33aace8cf234bda1c961e838306"
   },
   "5.4.0-sjlj": {
     "url": "https://download.sciencekill.top/x86_64-5.4.0-release-win32-sjlj-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "5dbea964148e9b272c66531ca1bf04d9"
   },
   "5.4.0-seh": {
     "url": "https://download.sciencekill.top/x86_64-5.4.0-release-win32-seh-rt_v5-rev0.7z",
-    "os": "-1"
+    "os": "-1",
+    "md5": "5489c28191cda5f12bf080a93f2e44ef"
   }
 }

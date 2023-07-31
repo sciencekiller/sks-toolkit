@@ -2,9 +2,11 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Threading;
@@ -96,7 +98,7 @@ namespace sks_toolkit
             data.Build = (Config["build"] ?? "10000").ToString();
 
             //获取最新版本号
-            JObject LatestRelease = await WebService.DownloadJson("https://hub.njuu.cf/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
+            JObject LatestRelease = await WebService.DownloadJson("https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Config.json");
             if (LatestRelease != null)
             {
                 data.latestVersion = (LatestRelease["version"] ?? "1.0.0").ToString();
@@ -116,7 +118,7 @@ namespace sks_toolkit
             }
             //获取C++下载列表
             List<string> gpp_version_list = new List<string>();
-            string latest_gpp_version_list_url = "https://hub.njuu.cf/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
+            string latest_gpp_version_list_url = "https://gitee.com/sciencekiller/sks-toolkit/raw/main/Assets/Gpp_Download_List.json";
             JObject latest_gpp_version_list = await WebService.DownloadJson(latest_gpp_version_list_url);
             foreach (var gpp_version in latest_gpp_version_list)
             {
@@ -128,6 +130,7 @@ namespace sks_toolkit
             }
             deploy_env_data.Gpp_version_list = gpp_version_list;
             deploy_env_data.Download_Link = latest_gpp_version_list;
+            startdeploy.IsEnabled = true;
             //设置绑定源
             MainTab.DataContext = data;
             DeployEnvTab.DataContext = deploy_env_data;
@@ -290,21 +293,43 @@ namespace sks_toolkit
             await Deploy();
         }
 
+        //寻找mingw
+        internal bool FindMinGW()
+        {
+            IDictionary environments = Environment.GetEnvironmentVariables();
+            var envlist = environments["Path"].ToString().Split(';');
+            foreach(var path in envlist)
+            {
+                if (File.Exists(path + "\\\\gcc.exe") || File.Exists(path + "\\\\g++.exe") || File.Exists(path + "\\\\gdb.exe"))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         //部署工作
         private async Task Deploy()
         {
+            
             MessageBox.Info("因为要从部署在Vercel的美国服务器下载资源(没钱买服务器)，虽然已经用了多线程下载技术，但还是会慢一点", "提示");
             Deploy_Step.Text = "准备部署...";
-            Thread.Sleep(3000);
-            //Deploy 
-            if (installcpp)
+            //开始部署
+            //C++
+            if (installcpp/*&&!FindMinGW()*/)//未安装，部署
             {
-                string gpp_download_url = deploy_env_data.Download_Link[cppversion]["url"].ToString();
-                Trace.WriteLine(gpp_download_url);
+                string gpp_download_url = deploy_env_data.Download_Link[cppversion]["url"].ToString();//获取下载链接
+                //Trace.WriteLine(gpp_download_url);
                 string downloadfolder = workDictionary;
                 await DownloadFile(gpp_download_url, downloadfolder + gpp_download_url.Split('/')[3]);
+            }else if (installcpp && FindMinGW())//已安装，跳过
+            {
+                MessageBox.Info("检测到用户机已经安装Mingw-w64，自动跳过", "跳过安装");
             }
+
+            //部署完成
             Deploy_Progress.Value = 100;
+            Deploy_Step.Text = "部署完成";
             if (isdeploycancel)
             {
                 Deploy_Progress.Style = FindResource("ProgressBarDanger") as Style;
