@@ -233,8 +233,8 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
             _typeNameTable[5] = "Microsoft.UI.Xaml.Media.XamlCompositionBrushBase";
             _typeNameTable[6] = "Windows.UI.Color";
             _typeNameTable[7] = "System.ValueType";
-            _typeNameTable[8] = "Double";
-            _typeNameTable[9] = "System.Nullable`1<Double>";
+            _typeNameTable[8] = "System.Nullable`1<Double>";
+            _typeNameTable[9] = "Double";
             _typeNameTable[10] = "TimeSpan";
             _typeNameTable[11] = "sks_toolkit.CommonLaunch.MainFrame";
             _typeNameTable[12] = "Microsoft.UI.Xaml.Controls.Page";
@@ -253,8 +253,8 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Media.XamlCompositionBrushBase);
             _typeTable[6] = typeof(global::Windows.UI.Color);
             _typeTable[7] = typeof(global::System.ValueType);
-            _typeTable[8] = typeof(global::System.Double);
-            _typeTable[9] = typeof(global::System.Nullable<global::System.Double>);
+            _typeTable[8] = typeof(global::System.Nullable<global::System.Double>);
+            _typeTable[9] = typeof(global::System.Double);
             _typeTable[10] = typeof(global::System.TimeSpan);
             _typeTable[11] = typeof(global::sks_toolkit.CommonLaunch.MainFrame);
             _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
@@ -344,9 +344,9 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
                 userType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Media.XamlCompositionBrushBase"));
                 userType.Activator = Activate_4_AcrylicBrush;
                 userType.AddMemberName("TintColor");
-                userType.AddMemberName("TintOpacity");
                 userType.AddMemberName("AlwaysUseFallback");
                 userType.AddMemberName("TintLuminosityOpacity");
+                userType.AddMemberName("TintOpacity");
                 userType.AddMemberName("TintTransitionDuration");
                 xamlType = userType;
                 break;
@@ -366,16 +366,16 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  Double
-                xamlType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 9:   //  System.Nullable`1<Double>
+            case 8:   //  System.Nullable`1<Double>
                 userType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetBoxedType(GetXamlTypeByName("Double"));
                 userType.BoxInstance = userType.BoxType<global::System.Double>;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
+                break;
+
+            case 9:   //  Double
+                xamlType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
             case 10:   //  TimeSpan
@@ -503,35 +503,35 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
             that.TintColor = (global::Windows.UI.Color)Value;
         }
-        private object get_2_AcrylicBrush_TintOpacity(object instance)
-        {
-            var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
-            return that.TintOpacity;
-        }
-        private void set_2_AcrylicBrush_TintOpacity(object instance, object Value)
-        {
-            var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
-            that.TintOpacity = (global::System.Double)Value;
-        }
-        private object get_3_AcrylicBrush_AlwaysUseFallback(object instance)
+        private object get_2_AcrylicBrush_AlwaysUseFallback(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
             return that.AlwaysUseFallback;
         }
-        private void set_3_AcrylicBrush_AlwaysUseFallback(object instance, object Value)
+        private void set_2_AcrylicBrush_AlwaysUseFallback(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
             that.AlwaysUseFallback = (global::System.Boolean)Value;
         }
-        private object get_4_AcrylicBrush_TintLuminosityOpacity(object instance)
+        private object get_3_AcrylicBrush_TintLuminosityOpacity(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
             return that.TintLuminosityOpacity;
         }
-        private void set_4_AcrylicBrush_TintLuminosityOpacity(object instance, object Value)
+        private void set_3_AcrylicBrush_TintLuminosityOpacity(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
             that.TintLuminosityOpacity = (global::System.Nullable<global::System.Double>)Value;
+        }
+        private object get_4_AcrylicBrush_TintOpacity(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
+            return that.TintOpacity;
+        }
+        private void set_4_AcrylicBrush_TintOpacity(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Media.AcrylicBrush)instance;
+            that.TintOpacity = (global::System.Double)Value;
         }
         private object get_5_AcrylicBrush_TintTransitionDuration(object instance)
         {
@@ -565,26 +565,26 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
                 xamlMember.Getter = get_1_AcrylicBrush_TintColor;
                 xamlMember.Setter = set_1_AcrylicBrush_TintColor;
                 break;
-            case "Microsoft.UI.Xaml.Media.AcrylicBrush.TintOpacity":
-                userType = (global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.AcrylicBrush");
-                xamlMember = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlMember(this, "TintOpacity", "Double");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_2_AcrylicBrush_TintOpacity;
-                xamlMember.Setter = set_2_AcrylicBrush_TintOpacity;
-                break;
             case "Microsoft.UI.Xaml.Media.AcrylicBrush.AlwaysUseFallback":
                 userType = (global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.AcrylicBrush");
                 xamlMember = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlMember(this, "AlwaysUseFallback", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_3_AcrylicBrush_AlwaysUseFallback;
-                xamlMember.Setter = set_3_AcrylicBrush_AlwaysUseFallback;
+                xamlMember.Getter = get_2_AcrylicBrush_AlwaysUseFallback;
+                xamlMember.Setter = set_2_AcrylicBrush_AlwaysUseFallback;
                 break;
             case "Microsoft.UI.Xaml.Media.AcrylicBrush.TintLuminosityOpacity":
                 userType = (global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.AcrylicBrush");
                 xamlMember = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlMember(this, "TintLuminosityOpacity", "System.Nullable`1<Double>");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_4_AcrylicBrush_TintLuminosityOpacity;
-                xamlMember.Setter = set_4_AcrylicBrush_TintLuminosityOpacity;
+                xamlMember.Getter = get_3_AcrylicBrush_TintLuminosityOpacity;
+                xamlMember.Setter = set_3_AcrylicBrush_TintLuminosityOpacity;
+                break;
+            case "Microsoft.UI.Xaml.Media.AcrylicBrush.TintOpacity":
+                userType = (global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.AcrylicBrush");
+                xamlMember = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlMember(this, "TintOpacity", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_4_AcrylicBrush_TintOpacity;
+                xamlMember.Setter = set_4_AcrylicBrush_TintOpacity;
                 break;
             case "Microsoft.UI.Xaml.Media.AcrylicBrush.TintTransitionDuration":
                 userType = (global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.AcrylicBrush");

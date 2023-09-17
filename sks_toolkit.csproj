@@ -17,6 +17,7 @@
     <None Remove="CommonLaunch\MainFrame.xaml" />
     <None Remove="FirstLaunch\MainFrame.xaml" />
     <None Remove="FirstLaunch\Pages\SetLanguage.xaml" />
+    <None Remove="Resources\Images\NextIcon.png" />
     <None Remove="Resources\Images\TowerBridge-Dark.jpg" />
   </ItemGroup>
 
@@ -28,6 +29,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="icon.ico" />
+    <Content Include="Resources\Images\NextIcon.png" />
     <Content Include="Resources\Images\TowerBridge-Dark.jpg" />
   </ItemGroup>
 

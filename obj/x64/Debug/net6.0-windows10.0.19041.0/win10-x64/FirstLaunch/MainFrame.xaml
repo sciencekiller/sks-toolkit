@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="sks_toolkit.FirstLaunch.MainFrame"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,16 +9,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="MainFrameGrid" Margin="16,32,16,16">
+    <Grid x:ConnectionId='2' x:Name="MainFrameGrid" Margin="16,32,16,16">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Image Source="/Resources/Images/TowerBridge-Dark.jpg" Grid.Column="0" Grid.ColumnSpan="2" Stretch="UniformToFill" VerticalAlignment="Center" Margin="-16,-32,-16,-16"/>
         <Grid Grid.Column="1" Background="{StaticResource FirstLaunchSettingBoxBrush}" Margin="64,128,128,128" CornerRadius="12">
-            <Frame x:Name="SettingFrame"/>
+            <Frame x:ConnectionId='4' x:Name="SettingFrame"/>
         </Grid>
-        <Button Grid.Column="1" x:Name="NextStepButton" Click="NextStepButton_Click" CornerRadius="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="CornflowerBlue" Margin="16" Height="32" Width="128">
+        <Button x:ConnectionId='3' Grid.Column="1" x:Name="NextStepButton"                              CornerRadius="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="CornflowerBlue" Margin="16" Height="32" Width="128">
             <Button.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -32,3 +32,4 @@
         </Button>
     </Grid>
 </Page>
+
