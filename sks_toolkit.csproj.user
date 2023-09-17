@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>E:\sks_toolkit-winui-old\icon-tran.png</Source>
+    <SmallTileSource>E:\sks_toolkit-winui-old\icon-tran.png</SmallTileSource>
+    <MediumTileSource>E:\sks_toolkit-winui-old\icon-tran.png</MediumTileSource>
+    <WideTileSource>E:\sks_toolkit-winui-old\icon-tran.png</WideTileSource>
+    <LargeTileSource>E:\sks_toolkit-winui-old\icon-tran.png</LargeTileSource>
+    <AppIconSource>E:\sks_toolkit-winui-old\icon-tran.png</AppIconSource>
+    <SplashScreenSource>E:\sks_toolkit-winui-old\icon-tran.png</SplashScreenSource>
+    <PackageLogoSource>E:\sks_toolkit-winui-old\icon-tran.png</PackageLogoSource>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="FirstLaunch\Pages\SetLanguage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FirstLaunch\MainFrame.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CommonLaunch\MainFrame.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <None Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+</Project>

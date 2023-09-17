@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="sks_toolkit.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:sks_toolkit">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!-- Other merged dictionaries here -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->
+            <!--Dark Theme Resources-->
+            <AcrylicBrush x:Name="FirstLaunchSettingBoxBrushDark" TintColor="MediumPurple" TintOpacity="0.6" FallbackColor="#34495E"/>
+            <SolidColorBrush x:Name="FirstLaunchNextButtonBrushDark" Color="Purple"/>
+            <!--Light Theme Resources-->
+            <AcrylicBrush x:Name="FirstLaunchSettingBoxBrushLight" TintColor="CornflowerBlue" TintOpacity="0.6" FallbackColor="#34495E"/>
+            <SolidColorBrush x:Name="FirstLaunchNextButtonBrushLight" Color="Blue"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "sks_toolkit (Package)": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "aaa"
+    },
+    "sks_toolkit (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
