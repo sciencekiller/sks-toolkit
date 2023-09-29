@@ -9,6 +9,7 @@ E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sk
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.pdb
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml
+E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.Win32.SystemEvents.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.InteractiveExperiences.Projection.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.WinUI.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.AppLifecycle.Projection.dll
@@ -25,6 +26,9 @@ E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Mi
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Release.Net.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Scighost.WinUILib.dll
+E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Encodings.Web.dll
+E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Json.dll
+E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\WinUIEx.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.CSharp.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.VisualBasic.Core.dll
@@ -159,8 +163,6 @@ E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Sy
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Encoding.CodePages.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Encoding.Extensions.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Encoding.dll
-E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Encodings.Web.dll
-E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.Json.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Text.RegularExpressions.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Threading.Channels.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Threading.Overlapped.dll
@@ -243,7 +245,7 @@ E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\db
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\hostfxr.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\hostpolicy.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordaccore.dll
-E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_6.0.2123.36311.dll
+E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_6.0.2223.42425.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordbi.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\mscorrc.dll
 E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\msquic.dll
@@ -270,6 +272,10 @@ E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Fi
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\MainWindow.xbf
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.GeneratedMSBuildEditorConfig.editorconfig
+E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.Resources.AppInfo.resources
+E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.Resources.Languages.en-US.resources
+E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.Resources.Languages.zh-CN.resources
+E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.csproj.GenerateResource.cache
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.AssemblyInfoInputs.cache
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.AssemblyInfo.cs
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.csproj.CoreCompileInputs.cache
@@ -295,11 +301,3 @@ E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\qu
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
-E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.Win32.SystemEvents.dll
-E:\sks_toolkit\sks_toolkit\bin\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\FirstLaunch\Pages\SetLanguage.xbf
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\FirstLaunch\Pages\SetLanguage.g.i.cs
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\FirstLaunch\Pages\SetLanguage.g.cs
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\FirstLaunch\Pages\SetLanguage.xaml
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\FirstLaunch\Pages\SetLanguage.xbf
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.Resources.AppInfo.resources
-E:\sks_toolkit\sks_toolkit\obj\x64\Debug\net6.0-windows10.0.19041.0\win10-x64\sks_toolkit.csproj.GenerateResource.cache

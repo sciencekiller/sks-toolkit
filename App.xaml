@@ -3,6 +3,7 @@
     x:Class="sks_toolkit.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
     xmlns:local="using:sks_toolkit">
     <Application.Resources>
         <ResourceDictionary>
@@ -11,7 +12,11 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <SolidColorBrush x:Name="LogoFontColor" Color="Purple"/>
             <AcrylicBrush x:Name="FirstLaunchSettingBoxBrush" TintColor="Transparent" TintOpacity="0.9" FallbackColor="#F52C2C2D"/>
+            <!--Fonts-->
+            <FontFamily x:Key="SourceHanSans">Resources/Fonts/#思源黑体 CN Light</FontFamily>
+            <FontFamily x:Key="JetBrainsMono">Resources/Fonts/#JetBrains Mono</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

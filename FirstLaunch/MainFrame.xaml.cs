@@ -1,8 +1,5 @@
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.Win32;
-using System.Diagnostics;
+using sks_toolkit.Scripts;
 using System.Text.Json.Nodes;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -14,36 +11,26 @@ namespace sks_toolkit.FirstLaunch
     /// </summary>
     public sealed partial class MainFrame : Page
     {
-        private int currentSet = 0;
         private JsonObject settings=new JsonObject();
+        private LanguageHelper lh = new LanguageHelper();
         public MainFrame()
         {
             InitializeComponent();
-            SettingFrame.Navigate(typeof(Pages.SetLanguage));
+            SetLanguage();
         }
-        private void NextStepButton_Click(object sender, RoutedEventArgs e)
+        private void SetLanguage()
         {
-            GetValue(currentSet);
-            NextPage(currentSet);
+            var language = System.Globalization.CultureInfo.InstalledUICulture.Name;
+            SetLanguage(language);
         }
-        private void GetValue(int n)
+        private void SetLanguage(string language)
         {
-            switch (n)
-            {
-                case 1:
-                    string language = Pages.SetLanguage.getValue();
-                    settings.Add("Language", language);
-                    break;
-            }
-        }
-        private void NextPage(int n)
-        {
-            n++;
-            switch (n)
-            {
-                case 2:
-                    break;
-            }
+            lh.SetLanguage(language);
+            WelcomeWord.Text = lh.GetString("WelcomePage_Header");
+            NextStepWord.Text = lh.GetString("WelcomePage_Next");
+            FirstGreeting.Text = lh.GetString("SetLanguage_FirstGreeting");
+            ToStartSet.Text = lh.GetString("SetLanguage_ToStartSet");
+            HowToStart.Text = lh.GetString("SetLanguage_HowToStart");
         }
     }
 }

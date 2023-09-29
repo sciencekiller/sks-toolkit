@@ -9,14 +9,12 @@
     <AppIconSource>E:\sks_toolkit-winui-old\icon-tran.png</AppIconSource>
     <SplashScreenSource>E:\sks_toolkit-winui-old\icon-tran.png</SplashScreenSource>
     <PackageLogoSource>E:\sks_toolkit-winui-old\icon-tran.png</PackageLogoSource>
+    <_LastSelectedProfileId>E:\sks_toolkit\sks_toolkit\Properties\PublishProfiles\win10-x64.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="FirstLaunch\Pages\SetLanguage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="FirstLaunch\MainFrame.xaml">
       <SubType>Designer</SubType>
     </Page>

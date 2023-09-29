@@ -224,7 +224,7 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[18];
+            _typeNameTable = new string[17];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -240,11 +240,10 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
             _typeNameTable[12] = "Microsoft.UI.Xaml.Controls.Page";
             _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.UserControl";
             _typeNameTable[14] = "sks_toolkit.FirstLaunch.MainFrame";
-            _typeNameTable[15] = "sks_toolkit.FirstLaunch.Pages.SetLanguage";
-            _typeNameTable[16] = "sks_toolkit.MainWindow";
-            _typeNameTable[17] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[15] = "sks_toolkit.MainWindow";
+            _typeNameTable[16] = "Microsoft.UI.Xaml.Window";
 
-            _typeTable = new global::System.Type[18];
+            _typeTable = new global::System.Type[17];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -260,9 +259,8 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
             _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
             _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
             _typeTable[14] = typeof(global::sks_toolkit.FirstLaunch.MainFrame);
-            _typeTable[15] = typeof(global::sks_toolkit.FirstLaunch.Pages.SetLanguage);
-            _typeTable[16] = typeof(global::sks_toolkit.MainWindow);
-            _typeTable[17] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[15] = typeof(global::sks_toolkit.MainWindow);
+            _typeTable[16] = typeof(global::Microsoft.UI.Xaml.Window);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -301,7 +299,6 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
         private object Activate_4_AcrylicBrush() { return new global::Microsoft.UI.Xaml.Media.AcrylicBrush(); }
         private object Activate_11_MainFrame() { return new global::sks_toolkit.CommonLaunch.MainFrame(); }
         private object Activate_14_MainFrame() { return new global::sks_toolkit.FirstLaunch.MainFrame(); }
-        private object Activate_15_SetLanguage() { return new global::sks_toolkit.FirstLaunch.Pages.SetLanguage(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -406,20 +403,13 @@ namespace sks_toolkit.sks_toolkit_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 15:   //  sks_toolkit.FirstLaunch.Pages.SetLanguage
-                userType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_SetLanguage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 16:   //  sks_toolkit.MainWindow
+            case 15:   //  sks_toolkit.MainWindow
                 userType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Microsoft.UI.Xaml.Window
+            case 16:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::sks_toolkit.sks_toolkit_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }

@@ -3,7 +3,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
 using WinRT.Interop;
-
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -18,10 +17,9 @@ namespace sks_toolkit
         private Scighost.WinUILib.Helpers.SystemBackdrop systemBackDrop;
         private IntPtr hwnd;
         private AppWindow appWindow;
-        private bool colorMode = true;//true:Dark false:Light
-        public MainWindow(string launchMode)
+        public MainWindow(string lm)
         {
-            this.launchMode = launchMode;
+            launchMode = lm;
             InitializeComponent();
             if (launchMode == "FirstLaunch")
             {

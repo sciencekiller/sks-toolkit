@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <None Remove="CommonLaunch\MainFrame.xaml" />
     <None Remove="FirstLaunch\MainFrame.xaml" />
-    <None Remove="FirstLaunch\Pages\SetLanguage.xaml" />
     <None Remove="Resources\Images\NextIcon.png" />
     <None Remove="Resources\Images\TowerBridge-Dark.jpg" />
   </ItemGroup>
@@ -39,6 +38,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Scighost.WinUILib" Version="0.1.2" />
     <PackageReference Include="System.Text.Json" Version="7.0.3" />
+    <PackageReference Include="WinUIEx" Version="2.2.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -61,24 +61,34 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="FirstLaunch\Pages\SetLanguage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Languages\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Resources\AppInfo.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AppInfo.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Languages\en-US.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Languages\zh-CN.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>zh-CN.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\AppInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Languages\en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Languages\zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

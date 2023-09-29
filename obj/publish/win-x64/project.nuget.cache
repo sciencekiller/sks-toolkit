@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "p0RS71b5cx7PeCDnINXN1r3dE4AdGYf4ohl3and7Bog4cYup6TdLDLTBB7zMYvUpcBq1Krl0jHyvmB9a98H9Iw==",
+  "success": true,
+  "projectFilePath": "E:\\sks_toolkit\\sks_toolkit\\sks_toolkit.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.windowsappsdk\\1.3.230602002\\microsoft.windowsappsdk.1.3.230602002.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\scighost.winuilib\\0.1.2\\scighost.winuilib.0.1.2.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\system.text.json\\7.0.3\\system.text.json.7.0.3.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\winuiex\\2.2.0\\winuiex.2.2.0.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.22\\microsoft.netcore.app.runtime.win-x64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.22\\microsoft.netcore.app.runtime.win-x86.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\6.0.22\\microsoft.netcore.app.runtime.win-arm64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.22\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.22\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-arm64\\6.0.22\\microsoft.windowsdesktop.app.runtime.win-arm64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.22\\microsoft.aspnetcore.app.runtime.win-x64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.22\\microsoft.aspnetcore.app.runtime.win-x86.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-arm64\\6.0.22\\microsoft.aspnetcore.app.runtime.win-arm64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.22\\microsoft.netcore.app.crossgen2.win-x64.6.0.22.nupkg.sha512",
+    "C:\\Users\\scien\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.29\\microsoft.windows.sdk.net.ref.10.0.19041.29.nupkg.sha512"
+  ],
+  "logs": []
+}
