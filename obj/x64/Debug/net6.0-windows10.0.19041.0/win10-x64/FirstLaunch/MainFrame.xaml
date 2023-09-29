@@ -32,16 +32,21 @@
                 <TextBlock Grid.Row="2" FontSize="60" FontFamily="{StaticResource JetBrainsMono}" FontWeight="ExtraBold" Margin="60,0,0,0">Sciencekill</TextBlock>
                 <TextBlock Grid.Row="3" FontSize="48" FontFamily="{StaticResource JetBrainsMono}" FontWeight="Light" Margin="130,0,0,0">Toolkit</TextBlock>
             </Grid>
-            <Grid x:ConnectionId='3' Grid.Column="1" x:Name="StartSet" Margin="128,256">
+            <Grid x:ConnectionId='3' Grid.Column="1" x:Name="StartSet" Margin="128,128" Background="{StaticResource TransparentAcrylicBrush}" CornerRadius="15">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="24"/>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:ConnectionId='9' x:Name="FirstGreeting" FontFamily="{StaticResource SourceHanSans}" FontSize="32" FontWeight="Bold" Grid.Row="0"/>
-                <TextBlock x:ConnectionId='10' x:Name="ToStartSet" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Grid.Row="2"/>
-                <TextBlock x:ConnectionId='11' x:Name="HowToStart" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Grid.Row="3"/>
+                <TextBlock x:ConnectionId='9' x:Name="FirstGreeting" FontFamily="{StaticResource SourceHanSans}" FontSize="32" Margin="30,0,0,0" FontWeight="Bold" Grid.Row="1"/>
+                <TextBlock x:ConnectionId='10' x:Name="ToStartSet" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Margin="30,0,0,0" Grid.Row="2"/>
+                <TextBlock x:ConnectionId='11' x:Name="HowToStart" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Margin="30,0,0,0" Grid.Row="3"/>
+                <Grid.Transitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromVerticalOffset="-1000"/>
+                    </TransitionCollection>
+                </Grid.Transitions>
             </Grid>
             <Grid x:ConnectionId='4' Grid.Column="1" x:Name="LanguageSetting" Margin="128,256">
                 
@@ -59,20 +64,30 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE111;" FontSize="16" Grid.Column="2"/>
                     </Grid>
                 </Button.Content>
+                <Button.Transitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromHorizontalOffset="1000" />
+                    </TransitionCollection>
+                </Button.Transitions>
             </Button>
             <Button x:ConnectionId='6' x:Name="BackButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20,20,170,20" Width="128" Height="32" CornerRadius="14" Visibility="Collapsed">
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="44"/>
                             <ColumnDefinition Width="34"/>
+                            <ColumnDefinition Width="44"/>
                             <ColumnDefinition Width="25"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:ConnectionId='7' x:Name="BackWord" Grid.Column="1"/>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE112;" FontSize="16" Grid.Column="2"/>
+                        <TextBlock x:ConnectionId='7' x:Name="BackWord" Grid.Column="2"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE112;" FontSize="16" Grid.Column="1"/>
                     </Grid>
-                </Button.Content>   
+                </Button.Content>
+                <Button.Transitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromHorizontalOffset="1000" />
+                    </TransitionCollection>
+                </Button.Transitions>
             </Button>
         </Grid>
     </Grid>

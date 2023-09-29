@@ -14,6 +14,7 @@
             <!-- Other app resources here -->
             <SolidColorBrush x:Name="LogoFontColor" Color="Purple"/>
             <AcrylicBrush x:Name="FirstLaunchSettingBoxBrush" TintColor="Transparent" TintOpacity="0.9" FallbackColor="#F52C2C2D"/>
+            <AcrylicBrush x:Name="TransparentAcrylicBrush" TintColor="Transparent" TintOpacity="0.8" FallbackColor="#F52C2C2D"/>
             <!--Fonts-->
             <FontFamily x:Key="SourceHanSans">Resources/Fonts/#思源黑体 CN Light</FontFamily>
             <FontFamily x:Key="JetBrainsMono">Resources/Fonts/#JetBrains Mono</FontFamily>
