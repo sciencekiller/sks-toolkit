@@ -123,8 +123,17 @@
   <data name="SetLanguage_HowToStart" xml:space="preserve">
     <value>Click the Next button below to start the experience now~</value>
   </data>
+  <data name="SetLanguage_IsRightLanguage" xml:space="preserve">
+    <value>Is this the right language for you?</value>
+  </data>
   <data name="SetLanguage_ToStartSet" xml:space="preserve">
     <value>It only takes several minute to set up.</value>
+  </data>
+  <data name="WelcomePage_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="WelcomePage_Finish" xml:space="preserve">
+    <value>Finish</value>
   </data>
   <data name="WelcomePage_Header" xml:space="preserve">
     <value>Welcome to</value>

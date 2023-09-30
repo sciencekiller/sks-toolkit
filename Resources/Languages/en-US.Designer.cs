@@ -79,11 +79,38 @@ namespace sks_toolkit.Resources.Languages {
         }
         
         /// <summary>
+        ///   查找类似 Is this the right language for you? 的本地化字符串。
+        /// </summary>
+        internal static string SetLanguage_IsRightLanguage {
+            get {
+                return ResourceManager.GetString("SetLanguage_IsRightLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 It only takes several minute to set up. 的本地化字符串。
         /// </summary>
         internal static string SetLanguage_ToStartSet {
             get {
                 return ResourceManager.GetString("SetLanguage_ToStartSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Back 的本地化字符串。
+        /// </summary>
+        internal static string WelcomePage_Back {
+            get {
+                return ResourceManager.GetString("WelcomePage_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Finish 的本地化字符串。
+        /// </summary>
+        internal static string WelcomePage_Finish {
+            get {
+                return ResourceManager.GetString("WelcomePage_Finish", resourceCulture);
             }
         }
         

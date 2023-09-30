@@ -123,8 +123,17 @@
   <data name="SetLanguage_HowToStart" xml:space="preserve">
     <value>点击下面的下一步按钮，即刻开始体验~</value>
   </data>
+  <data name="SetLanguage_IsRightLanguage" xml:space="preserve">
+    <value>这是正确的语言吗?</value>
+  </data>
   <data name="SetLanguage_ToStartSet" xml:space="preserve">
     <value>只用花几分钟完成设置。</value>
+  </data>
+  <data name="WelcomePage_Back" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="WelcomePage_Finish" xml:space="preserve">
+    <value>完成</value>
   </data>
   <data name="WelcomePage_Header" xml:space="preserve">
     <value>欢迎来到</value>
