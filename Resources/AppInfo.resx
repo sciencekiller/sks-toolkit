@@ -129,6 +129,9 @@
     <value>English</value>
     <comment>英文对应</comment>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>en-US</value>
+  </data>
   <data name="LanguageSupport" xml:space="preserve">
     <value>zh-CN;en-US</value>
     <comment>支持语言</comment>
@@ -144,5 +147,8 @@
   <data name="zh-CN" xml:space="preserve">
     <value>中文简体</value>
     <comment>中文简体对应</comment>
+  </data>
+  <data name="中文简体" xml:space="preserve">
+    <value>zh-CN</value>
   </data>
 </root>

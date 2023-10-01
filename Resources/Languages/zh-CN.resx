@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SetLanguage_AskLanguage" xml:space="preserve">
+    <value>我们从你的操作系统中获取到这个语言。如果它是错误的，请在下面选择正确的语言</value>
+  </data>
   <data name="SetLanguage_FirstGreeting" xml:space="preserve">
     <value>这是你第一次使用吗?</value>
   </data>

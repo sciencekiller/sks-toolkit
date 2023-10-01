@@ -88,6 +88,15 @@ namespace sks_toolkit.Resources {
         }
         
         /// <summary>
+        ///   查找类似 en-US 的本地化字符串。
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 zh-CN;en-US 的本地化字符串。
         /// </summary>
         internal static string LanguageSupport {
@@ -120,6 +129,15 @@ namespace sks_toolkit.Resources {
         internal static string zh_CN {
             get {
                 return ResourceManager.GetString("zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 zh-CN 的本地化字符串。
+        /// </summary>
+        internal static string 中文简体 {
+            get {
+                return ResourceManager.GetString("中文简体", resourceCulture);
             }
         }
     }

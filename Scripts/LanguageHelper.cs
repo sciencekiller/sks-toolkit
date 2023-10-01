@@ -44,5 +44,28 @@ namespace sks_toolkit.Scripts
         {
             return GetString(language, key);
         }
+        internal List<string> GetSupportLanguages()
+        {
+            var ll=GetLanguageList();
+            string[] languageList= ll.Split(";");
+            List<string> languages = new List<string>();
+            foreach(string l in languageList)
+            {
+                languages.Add(GetLanguageNameFromCode(l));
+            }
+            return languages;
+        }
+        internal string GetLanguageNameFromCode(string code)
+        {
+            return AppInfoHelper.GetInfo(code);
+        }
+        internal string GetLanguageCodeFromName(string name)
+        {
+            return AppInfoHelper.GetInfo(name);
+        }
+        private string GetLanguageList()
+        {
+            return AppInfoHelper.GetInfo("LanguageSupport");
+        }
     }
 }

@@ -32,16 +32,16 @@
                 <TextBlock Grid.Row="2" FontSize="60" FontFamily="{StaticResource JetBrainsMono}" FontWeight="ExtraBold" Margin="60,0,0,0">Sciencekill</TextBlock>
                 <TextBlock Grid.Row="3" FontSize="48" FontFamily="{StaticResource JetBrainsMono}" FontWeight="Light" Margin="130,0,0,0">Toolkit</TextBlock>
             </Grid>
-            <Grid Grid.Column="1" x:Name="StartSet" Margin="128" Background="{StaticResource TransparentAcrylicBrush}" CornerRadius="15">
+            <Grid Grid.Column="1" x:Name="StartSet" Margin="128" Background="{StaticResource TransparentAcrylicBrush}" CornerRadius="15" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="FirstGreeting" FontFamily="{StaticResource SourceHanSans}" FontSize="32" Margin="30,0,0,0" FontWeight="Bold" Grid.Row="1"/>
-                <TextBlock x:Name="ToStartSet" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Margin="30,0,0,0" Grid.Row="2"/>
-                <TextBlock x:Name="HowToStart" FontFamily="{StaticResource SourceHanSans}" FontSize="16" Margin="30,0,0,0" Grid.Row="3"/>
+                <TextBlock x:Name="FirstGreeting" FontFamily="{StaticResource SourceHanSans}" TextWrapping="Wrap" FontSize="32" Margin="30,0,0,0" FontWeight="Bold" Grid.Row="1"/>
+                <TextBlock x:Name="ToStartSet" FontFamily="{StaticResource SourceHanSans}" TextWrapping="Wrap" FontSize="16" Margin="30,0,0,0" Grid.Row="2"/>
+                <TextBlock x:Name="HowToStart" FontFamily="{StaticResource SourceHanSans}" TextWrapping="Wrap" FontSize="16" Margin="30,0,0,0" Grid.Row="3"/>
                 <Grid.Transitions>
                     <TransitionCollection>
                         <EntranceThemeTransition FromVerticalOffset="-1000"/>
@@ -51,12 +51,13 @@
             <Grid Grid.Column="1" x:Name="LanguageSetting" Margin="128" Background="{StaticResource TransparentAcrylicBrush}" CornerRadius="15" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="48"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="IsRightLanguage" FontFamily="{StaticResource SourceHanSans}" FontSize="32" Margin="30,0,0,0" FontWeight="Bold" Grid.Row="1"/>
-                
+                <TextBlock x:Name="IsRightLanguage" FontFamily="{StaticResource SourceHanSans}" TextWrapping="Wrap" FontSize="32" Margin="30,0,0,0" FontWeight="Bold" Grid.Row="1"/>
+                <TextBlock x:Name="AskLanguage" FontFamily="{StaticResource SourceHanSans}" TextWrapping="Wrap" FontSize="16" Margin="30,0,0,0" Grid.Row="2" />
+                <ComboBox x:Name="SelectLanguage" Width="256" Background="{StaticResource TransparentAcrylicBrush}" Margin="30,0,0,0" Grid.Row="3" SelectionChanged="SelectLanguage_SelectionChanged"/>
             </Grid>
             <Button x:Name="NextStepButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Width="128" Height="32" CornerRadius="14" Click="NextStepButton_Click">
                 <Button.Content>
@@ -77,7 +78,7 @@
                     </TransitionCollection>
                 </Button.Transitions>
             </Button>
-            <Button x:Name="BackButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20,20,170,20" Width="128" Height="32" CornerRadius="14" Visibility="Collapsed">
+            <Button x:Name="BackButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20,20,170,20" Width="128" Height="32" CornerRadius="14" Click="BackButton_Click" Visibility="Collapsed">
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -91,7 +92,7 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button x:Name="FinishButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Width="128" Height="32" CornerRadius="14" Visibility="Collapsed">
+            <Button x:Name="FinishButton" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Width="128" Height="32" CornerRadius="14" Click="FinishButton_Click" Visibility="Collapsed">
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>

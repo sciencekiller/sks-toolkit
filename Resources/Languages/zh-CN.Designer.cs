@@ -61,6 +61,15 @@ namespace sks_toolkit.Resources.Languages {
         }
         
         /// <summary>
+        ///   查找类似 我们从你的操作系统中获取到这个语言。如果它是错误的，请在下面选择正确的语言 的本地化字符串。
+        /// </summary>
+        internal static string SetLanguage_AskLanguage {
+            get {
+                return ResourceManager.GetString("SetLanguage_AskLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 这是你第一次使用吗? 的本地化字符串。
         /// </summary>
         internal static string SetLanguage_FirstGreeting {
